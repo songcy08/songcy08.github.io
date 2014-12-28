@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Welcome to Changyue Song's Homepage]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://songcy.net/"/>
-  <updated>2014-12-28T12:51:42.824Z</updated>
+  <updated>2014-12-28T15:09:05.980Z</updated>
   <id>http://songcy.net/</id>
   
   <author>
@@ -177,7 +177,11 @@
 <center>
 <a href="../../post-attachments/1/a-coarse-model-for-multiple-hard-drives1.png"><img src="../../post-attachments/1/a-coarse-model-for-multiple-hard-drives1.png" alt="" width="539" height="357"></a>
 </center>
-<p>One question may be as follows: &gt; Isn’t it a waste of hard drive space if we use multiple drives to store only one dataset? Yes, it is really a waste of space. However, imagine if we have multiple datasets (or multiple users of this system), we can do the same to all the datasets. Then the space of hard drives can be more efficiently utilized. At the same time, the data access time for each dataset will be shortened as long as we don’t analyze all datasets at the same time!</p>
+<p>One question may be as follows:</p>
+<blockquote>
+<p>Isn’t it a waste of hard drive space if we use multiple drives to store only one dataset?</p>
+</blockquote>
+<p>Yes, it is really a waste of space. However, imagine if we have multiple datasets (or multiple users of this system), we can do the same to all the datasets. Then the space of hard drives can be more efficiently utilized. At the same time, the data access time for each dataset will be shortened as long as we don’t analyze all datasets at the same time!</p>
 <p>Then we may want to build one such kind of system. But we will confront some problems. The first problem is about hardware failure rate. Although an individual hardware has a relatively low failure rate, the failure rate of a group of hard drives will be high, since the system fails as long as one of the drives fails. The second problem is in which way can we combine the data from multiple drives? There are also other problems need to be addressed.</p>
 <p>With consideration of these problems, Hadoop is such kind of system for distributed computing! The Hadoop project provides you the concept, ideas and framework. It also offers a system for installation. You can install the Hadoop system on a single machine or on a group of computers. It is somewhat like the operating system designed for computer cluster. Hadoop also provides libraries so that you can write your own applications to interact with the system, and to analyze your own dataset.</p>
 <h2 id="overview-of-hadoop">2. Overview of Hadoop</h2>
@@ -329,7 +333,7 @@
     
       <category term="wordpress" scheme="http://songcy.net/tags/wordpress/"/>
     
-      <category term="Technique" scheme="http://songcy.net/categories/Technique/"/>
+      <category term="technique" scheme="http://songcy.net/categories/technique/"/>
     
   </entry>
   
