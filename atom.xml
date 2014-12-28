@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Green Sky]]></title>
+  <subtitle><![CDATA[Welcome to Changyue Song's Homepage]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://songcy.net/"/>
+  <updated>2014-12-28T11:34:34.193Z</updated>
+  <id>http://songcy.net/</id>
+  
+  <author>
+    <name><![CDATA[Song, Changyue]]></name>
+    <email><![CDATA[songcy08@qq.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[A Summary of State-space Models]]></title>
+    <link href="http://songcy.net/posts/summary-of-state-space-models/"/>
+    <id>http://songcy.net/posts/summary-of-state-space-models/</id>
+    <published>2014-12-09T23:00:00.000Z</published>
+    <updated>2014-12-09T23:00:00.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="bayesian-filter">1. Bayesian Filter</h2>
+<p>In this article, I summarize some famous state-space models. Here I won’t go into details but focus on the entire map to get an overview. All these state-space models originate from Bayesian filter. In these models, two stochastic processes are considered. The first process is <strong>states</strong> <span class="math">\(x_t\)</span>, and the second process is <strong>observations</strong> or <strong>measurements</strong> <span class="math">\(y_t\)</span>, where <span class="math">\(t\)</span> means “time” but generally the processes are not restricted to time series. We are interested in the true value of states, but we can only observe the value of observations. Therefore, state-space models aim to estimate states based on observations. Two relationships should be addressed:</p>
+<ul>
+<li>The state-to-state probability <span class="math">\(P(x_t | x_{1:t-1})\)</span></li>
+<li>The state-to-observation probability <span class="math">\(P(y_t | x_t)\)</span> No <em>direct</em> relationship exists between any two observations. A common assumption is the Markov property, which assumes that the current state depends only on the previous state, namely <span class="math">\(P(x_t | x_{1:t-1})=P(x_t|x_{t-1})\)</span>.</li>
+</ul>
+<h2 id="prediction-and-updating">2. Prediction and Updating</h2>
+<p>State-space model has online algorithms with recursive two steps. Prediction is to estimate the posterior distribution <span class="math">\(p(x_t | y_{1:t-1})\)</span> based on the distribution <span class="math">\(p(x_{t-1}| y_{1:t-1})\)</span>, according to the state-to-state probability <span class="math">\(P(x_t|x_{t-1})\)</span>. Mathematically, <span class="math">\[
+    p(x_t|y_{1:t-1})=\int p(x_t|x_{t-1}) p(x_{t-1}|y_{1:t-1}) dx_{t-1}
+\]</span> Updating is to update the previous distribution based on the latest observation <span class="math">\(y_t\)</span>. Mathematically, <span class="math">\[
+    p(x_t | y_{1:t})= p(y_t|x_t) p(x_t|y_{1:t-1}) /p(y_t) \propto p(y_t|x_t) p(x_t|y_{1:t-1})
+\]</span></p>
+<h2 id="considerations-in-modeling">3. Considerations in Modeling</h2>
+<p>Bayesian filters estimate <span class="math">\(x_t\)</span> by the posterior distribution <span class="math">\(p(x_t | y_{1:t})\)</span>. Usually the state-to-state probability and state-to-observation probability cannot be obtained directly when modeling practical problems. Instead, they should be inferred from prediction model <span class="math">\(x_t=f(x_{t-1})\)</span> and measurement model <span class="math">\(y_t=g(x_t)\)</span>. And a series of questions must be answered:</p>
+<ul>
+<li>Is state <span class="math">\(x_t\)</span> discrete or continuous?</li>
+<li>What is the distribution of <span class="math">\(x_t\)</span>?</li>
+<li>Is the prediction model linear or nonlinear?</li>
+<li>Is the measurement model linear or nonlinear? According to different answers to these questions, we have different filters as follows.</li>
+</ul>
+<p><a href="../../post-attachments/3/structure-of-bayesian-filters.png"><img src="../../post-attachments/3/structure-of-bayesian-filters.png" alt="" width="625" height="364"></a></p>
+<h2 id="classification-of-bayesian-filters">4. Classification of Bayesian filters</h2>
+<p>Based on whether the state <span class="math">\(x_t\)</span> is discrete or continuous, Bayesian filters are divided into discrete filters and continuous filters. When state <span class="math">\(x_t\)</span> can only be discrete values, the state-to-state probability can be expressed by transition matrix <span class="math">\(A=[a_{i,j}]\)</span> where <span class="math">\(a_{i,j}=P(x_t =j|x_{t-1}=i)\)</span>.</p>
+<p>Based on whether the distribution of <span class="math">\(x_t\)</span> is assumed to be a specific format, continuous Bayesian filters are divided into parametric and nonparametric filters. For example , in Gaussian filters, the distribution of <span class="math">\(x_t\)</span> is assumed to be multivariate normal distribution. With this assumption, the posterior distribution <span class="math">\(p(x_t|y_{1:t})\)</span> can be expressed in close-form explicitly. On the other side, non-parametric filters don’t make any assumptions in the distribution of <span class="math">\(x_t\)</span>, but use some techniques to approximate the distribution. For example, the distribution of <span class="math">\(x_t\)</span> can be expressed by a histogram (Histogram filter) or a lot of samples (Particle filter) drawn from the target distribution. Non-parametric filters approximate the distribution, and put no restrictions on prediction model <span class="math">\(x_t=f(x_{t-1})\)</span> and measurement model <span class="math">\(y_t=g(x_t)\)</span>, thus flexible in various situations. However, the computation load is heavy since there is no close-form expression, and the better of the approximation, the heavier of the computation burden.</p>
+<p>Gaussian filters assume the distribution of <span class="math">\(x_t\)</span> to be multivariate normal distribution. In classical Kalman filter, the prediction model <span class="math">\(x_t=f(x_{t-1})\)</span> and the measurement model <span class="math">\(y_t=g(x_t)\)</span> are assumed linear in order to maintain normality. Specifically, <span class="math">\(x_t=A x_{t-1}+ \epsilon_t, y_t=B x_t + \delta_t\)</span>. Derivatives of Kalman filter such as Extended Kalman filter and Uncented Kalman filter relax the linear relationship assumption, but approximate by linearization techniques such as Taylor expansion. Information filter and its derivatives are essentially the same to Kalman filter family, with information expression of multivariate normal distribution <span class="math">\(\Omega=\Sigma^{-1}, \xi=\Omega \mu\)</span>.</p>
+<p>Hybrid filters are mixture of parametric and non-parametric filters, with some dimensions of state assumed to be in specific format and other dimensions to be expressed in non-parametric techniques.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="bayesian-filter">1. Bayesian Filter</h2>
+<p>In this article, I summarize some famous state-space models. Here I won’t go into detai]]>
+    </summary>
+    
+      <category term="state-space models" scheme="http://songcy.net/tags/state-space-models/"/>
+    
+      <category term="Bayesian filter" scheme="http://songcy.net/tags/Bayesian-filter/"/>
+    
+      <category term="academy" scheme="http://songcy.net/categories/academy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[From Vector to Function — Transformations, Basis, and Kernel Method]]></title>
+    <link href="http://songcy.net/posts/vector-to-function-basis-kernel/"/>
+    <id>http://songcy.net/posts/vector-to-function-basis-kernel/</id>
+    <published>2014-10-10T22:00:00.000Z</published>
+    <updated>2014-10-10T22:00:00.000Z</updated>
+    <content type="html"><![CDATA[<p>Here is only some superficial thought about Fourier transformation (and other similar transformations), space basis, and kernel method. I will continuously update the post for new thoughts.</p>
+<h2 id="what-is-function">1. What is function</h2>
+<p>A function is an infinite vector. Every thought begins here. As the following figure shows</p>
+<center>
+<a href="../../post-attachments/2/Signal_Sampling.png"><img src="../../post-attachments/2/Signal_Sampling.png" alt="source: http://en.wikipedia.org/wiki/Sampling_(signal_processing)" width="379" height="246"></a>
+</center>
+<p>For a function defined on the interval <span class="math">\([a,b]\)</span>, we take samples by an interval <span class="math">\(\Delta x\)</span>. If we sample the function <span class="math">\(f(x)\)</span> at points <span class="math">\(a, x_1,\cdots,x_n,b\)</span>, then we can transform the function into a vector <span class="math">\((f(a),f(x_1),\cdots,f(x_n),f(b))^T\)</span>. When <span class="math">\(\Delta x\rightarrow 0\)</span>, the vector should be more and more close to the function and at last, it becomes infinite.</p>
+<p>The above analysis assumes <span class="math">\(x\)</span> to be a real number. But when <span class="math">\(x\)</span> is a vector, it still holds. From now on, we use bold font such as <span class="math">\(\mathbf{x}\)</span> to denote normal vector in <span class="math">\(\mathcal{R}^n\)</span> space; use <span class="math">\(f\)</span> to denote the function itself, namely the infinite vector; use <span class="math">\(f(\mathbf{x})\)</span> to denote the evaluation of the function at point <span class="math">\(\mathbf{x}\)</span>. And the evaluation of a function should be a real number.</p>
+<h2 id="function-inner-product">2. Function inner product</h2>
+<p>Vectors have inner product. For vector <span class="math">\(\mathbf{x}=(x_1,\cdots,x_n)\)</span> and <span class="math">\(\mathbf{y}=(y_1, \cdots, y_n)\)</span>, the inner product of <span class="math">\(\mathbf{x}\)</span> and <span class="math">\(\mathbf{y}\)</span> is defined as <span class="math">\[
+    &lt;\mathbf{x},\mathbf{y}&gt;=\sum_{i=1}^n x_i y_i
+\]</span> Similarly, functions have inner product. For two functions <span class="math">\(latex f\)</span> and <span class="math">\(latex g\)</span> sampling by interval <span class="math">\(latex \Delta x\)</span>, the inner product may be defined as <span class="math">\[
+    &lt;f,g&gt;=\lim_{\Delta x\rightarrow 0}\sum_{i} f(x_i) g(x_i)
+\]</span> at first thought. However, the above equation doesn’t converge when <span class="math">\(\Delta x\rightarrow 0\)</span>. Something is missing. As <span class="math">\(x\)</span> approaches 0, the dimension of <span class="math">\(f\)</span> and <span class="math">\(g\)</span> grows larger in our denotation.</p>
+<p>For a vector, the dimension is discrete. We only have the first, second,… dimension. But we don’t have the 0.5, 1.5,… dimension. When we transform a function into a vector, every sample point is located at a discrete dimension. However, this should not be true, since the dimension of each sample point should be stable so that the above equation will converge. Therefore, the dimension is not discrete for functions, but continuous. What we miss is the difference between adjacent dimensions for normalization. Therefore, we can define the inner product of two functions as <span class="math">\[
+    &lt;f,g&gt;=\lim_{\Delta x\rightarrow 0}\sum_{i} f(x_i) g(x_i)\Delta x=\int f(x)g(x)dx
+\]</span></p>
+<h2 id="basis">3. Basis</h2>
+<p>What is the meaning of inner product? For two vectors <span class="math">\(A\)</span> and <span class="math">\(B\)</span>, the inner product is the projection of one vector to the other.</p>
+<center>
+<a href="../../post-attachments/2/1000px-Dot_Product.png"><img src="../../post-attachments/2/1000px-Dot_Product.png" alt="" width="250" height="200"></a>
+</center>
+<p><span class="math">\[
+    &lt;A,B&gt;=|A||B|\cos\theta
+\]</span> Namely <span class="math">\[
+    \mathrm{projection}(A) = \frac{&lt;A,B&gt;}{|B|^2} B
+\]</span> If we regard the length of <span class="math">\(B\)</span> as one unit, then the inner product is the coordinate of the projection on <span class="math">\(B\)</span>. Therefore, given a set of orthogonal basis vector <span class="math">\(\{\mathbf{e}_i\}_{i=1}^n\)</span> where <span class="math">\(&lt;\mathbf{e}_i,\mathbf{e}_j&gt;=0\)</span> and <span class="math">\(|\mathbf{e}_i|=1\)</span>. The basis vectors can establish a space by linear operations. Any vector <span class="math">\(\mathbf{x}\)</span> in the space can be denoted as <span class="math">\[
+    \mathbf{x}=\sum_{i=1}^n &lt;\mathbf{x},\mathbf{e}_i&gt; \cdot \mathbf{e_i}
+\]</span> More generally, if <span class="math">\(|\mathbf{e}_i| \neq 1\)</span>, then <span class="math">\[
+    \mathbf{x}=\sum_{i=1}^n \frac{&lt;\mathbf{x},\mathbf{e}_i&gt;}{|\mathbf{e}_i|^2} \mathbf{e}_i=\sum_{i=1}^n \frac{&lt;\mathbf{x},\mathbf{e}_i&gt;}{&lt;\mathbf{e}_i,\mathbf{e}_i&gt;} \mathbf{e}_i
+\]</span> Functions also have basis, which can be orthogonal or non-orthogonal. If we define the set of function basis, any function in the space can also be decomposed into the combination of several basis functions. Function inner product can also be used to calculate the coefficient on any specific basis. However, since the dimension of function is continuous, there may be infinite basis functions.</p>
+<p>For a set of function basis <span class="math">\(\{h_i\}\)</span>, if <span class="math">\(&lt;h_i,h_j&gt;=0\)</span> and <span class="math">\(|h_i|=1\)</span>, any function within the space can be denoted as <span class="math">\[
+    f=\sum &lt;f,h_i&gt; \cdot h_i=\sum_i \int f(x)h_i(x)dx \cdot h_i
+\]</span> If <span class="math">\(|h_i| \neq 1\)</span>, <span class="math">\[
+    f=\sum_i \frac{&lt;f,h_i&gt;}{&lt;h_i,h_i&gt;} h_i
+\]</span> similar to the vector case.</p>
+<h2 id="example-transformations">4. Example: Transformations</h2>
+<p>Let the basis functions <span class="math">\(\{h_p\}, (p\)</span> is interger) be <span class="math">\[
+    h_p(x)=e^{i2\pi p x/T}
+\]</span> defined on interval <span class="math">\([0, T]\)</span>. Here I use <span class="math">\(p\)</span> to index the basis functions in order to distinguish from the imaginary number <span class="math">\(i\)</span>. These construct a space and any function defined on interval <span class="math">\([0, T]\)</span> is within the space. It can be proven that any two basis function are orthogonal (for complex numbers, the latter term should take conjugate transpose when calculating the inner product). <span class="math">\[
+    &lt;h_p, h_q&gt;=\int_0^T h_p (x) \bar{h_q(x)} dx=\int_0^T e^{i2\pi p x/T} e^{-i2\pi q x/T} dx=0
+\]</span> where <span class="math">\(p \neq q\)</span> and <span class="math">\(\bar{a+bi}=a-bi\)</span>. The “length” of basis is <span class="math">\[
+    |h_p|^2=&lt;h_p,h_p&gt;=T
+\]</span> If a function <span class="math">\(latex f\)</span> defined on interval <span class="math">\([0,T]\)</span> is within the space, it can be written as <span class="math">\[
+    f(x)=\sum_p c_p h_p(x)=\sum_p c_p e^{i2\pi px/T}
+\]</span> And the coefficient can be calculated as <span class="math">\[
+    c_p=\frac{&lt;f,h_p&gt;}{|h_p|^2}=\frac{1}{T} \int_0^T f(x)\bar{h_p(x)}dx=\frac{1}{T} \int_0^T f(x) e^{-i2\pi p x} dx
+\]</span> Actually this is the Fourier series. A more thorough discussion about Fourier series can be found <a href="http://www.thefouriertransform.com/" target="_blank" rel="external">here</a>.</p>
+<h2 id="kernel-function">5. Kernel Function</h2>
+<p>Instead of <span class="math">\(i\)</span>, we use <span class="math">\(y\)</span> to index the basis function. Let <span class="math">\[
+    K(x,y)=h_y(x)
+\]</span> The set of basis functions can be denoted as one function with two parameters. In the example, <span class="math">\(y\)</span> is discrete. However, this is not the full space. If we let <span class="math">\(y\)</span> to be real number, then any functions may be represented.</p>
+<p>The function <span class="math">\(K(x,y)\)</span> is kernel function. It may be viewed as a cluster of basis functions. If they are orthogonal <span class="math">\(&lt;K(\cdot,y_1),K(\cdot,y_2)&gt;=0\)</span> for any <span class="math">\(y_1 \neq y_2\)</span>, and the squared “length” of basis <span class="math">\(|K(\cdot,y)|^2=\int 1 dx\)</span>, any function <span class="math">\(f\)</span> can be represented as <span class="math">\[
+    f=\int F(y)K(\cdot,y) dy
+\]</span> And the coefficient of a function <span class="math">\(f\)</span> on a basis <span class="math">\(K(\cdot,y)\)</span> is calculated as <span class="math">\[
+    F(y)=&lt;f,K(\cdot,y)&gt;=\int f(x)K(x,y)dx
+\]</span> Therefore, kernel function is able to transform a function into another space (a function space).</p>
+<h2 id="example-transformations-1">6. Example: Transformations</h2>
+<p>Let the kernel function to be <span class="math">\[
+    K(x,y)=e^{i2\pi xy}
+\]</span> where <span class="math">\(i\)</span> is the imaginary number. It is easy to show that the basis functions are mutual orthogonal, <span class="math">\[
+    &lt;K(\cdot,y_1),K(\cdot,y_2)&gt;=\int K(x,y_1) \bar{K(x,y_2)}dx=\int e^{i2\pi xy_1}e^{-i2\pi xy_2}dx=0
+\]</span> when <span class="math">\(y_1 \neq y_2\)</span>. Then squared “length” of basis is <span class="math">\[
+    &lt;K(\cdot,y),K(\cdot,y)&gt;=\int K(x,y)\bar{K(x,y)} dx=\int 1 dx
+\]</span> This constitutes a full function space. The coefficient is calculated as <span class="math">\[
+    F(y)=&lt;f,K(\cdot ,y)&gt;=\int f(x) \bar{K(x,y)} dx=\int f(x)e^{-i2\pi xy}dx
+\]</span> The original function is represented as <span class="math">\[
+    f(x)=\int F(y) K(x,y) dy=\int F(y) e^{i2\pi xy}dy
+\]</span> Actually this is the Fourier transformation. Other transformations such as Laplace transformation, Z-transformation are similar. Maybe wavelet is also within the framework.</p>
+<h2 id="something-about-kernel-method">7. Something about Kernel Method</h2>
+<p>For a kernel function <span class="math">\(K(x,y)\)</span>, if we regard it as a cluster of basis, then we can get a space by the linear combination of the basis. However, the basis may not be orthogonal. This is somewhat like a matrix <span class="math">\(P\)</span>, if we use the columns of <span class="math">\(P\)</span> to generate a space. To construct orthogonal basis for the space, we can use eigen value and eigen vectors of <span class="math">\(P\)</span>. Similarly, we can use eigenfunctions as the basis for the function space generated by <span class="math">\(K(x,y)\)</span>. If all the eigen values are positive, then the kernel function is positive. If the inner product is defined as <span class="math">\[
+    &lt;K(\cdot,x), K(\cdot,y)&gt;=K(x,y)
+\]</span> This is the reproducing kernel Hilbert space. It is commonly used to calculate the inner product of two mappings in a high-dimension feature space. When linear model is not enough, we can map the points into feature space and use kernel trick to calculate inner product. Support Vector Machine is an example.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Here is only some superficial thought about Fourier transformation (and other similar transformations), space basis, and kernel method. I]]>
+    </summary>
+    
+      <category term="Fourier transformation" scheme="http://songcy.net/tags/Fourier-transformation/"/>
+    
+      <category term="Function basis" scheme="http://songcy.net/tags/Function-basis/"/>
+    
+      <category term="Kernel function" scheme="http://songcy.net/tags/Kernel-function/"/>
+    
+      <category term="Kernel method" scheme="http://songcy.net/tags/Kernel-method/"/>
+    
+      <category term="academy" scheme="http://songcy.net/categories/academy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[A Preliminary Introduction about Hadoop — Concepts and Ideas]]></title>
+    <link href="http://songcy.net/posts/introduction-about-hadoop-concepts/"/>
+    <id>http://songcy.net/posts/introduction-about-hadoop-concepts/</id>
+    <published>2014-10-01T22:00:00.000Z</published>
+    <updated>2014-10-01T22:00:00.000Z</updated>
+    <content type="html"><![CDATA[<p>I have spent several days in studying Hadoop. Here I would like to write some notes about the concept and ideas behind the Hadoop project. This blog will not show any technique details, but focus on the preliminary ideas. You can download the PDF slides <a href="../../post-attachments/1/Preliminary-study-about-Hadoop-Songcy.pdf">here</a>.</p>
+<h2 id="background">1. Background</h2>
+<p>“Big data” — this word is everywhere. We are living in the century of data. The amount of data grows explosively. The following figure predicts the amount of data in the next few years. From the figure we know that the growth of data is quite rapid.</p>
+<center>
+<a href="../../post-attachments/1/growth-of-data.jpg"><img src="../../post-attachments/1/growth-of-data.jpg" alt="" width="474" height="359"></a>
+</center>
+<p>In accordance with the growth of data, the storage capacity of hard drives also increased massively. However, the access speed (the data transfer rate in reading and writing) has not kept up, which means we have to spend a lot of time for data reading and data writing, compared to the capacity of hard drives. The following figure compares the capacity and data transfer performance of hard drives. As it shows, the difference becomes more and more significant.</p>
+<center>
+<a href="../../post-attachments/1/comparison-of-capacity-and-transfer-rate.jpg"><img src="../../post-attachments/1/comparison-of-capacity-and-transfer-rate.jpg" alt="Source: http://www.cs.ucla.edu/classes/winter13/cs111/scribe/10c/f" width="632" height="260"></a>
+</center>
+<p>Currently if we have 1TB of data on a hard disk, we need more than 2.5 hours to read all the data! Therefore, in the age of big data, the low data access speed is the bottle neck for data storage, retrieval, and analysis. How to deal with the bottle neck? Some people came up with the idea of multiple hard drives and parallel computing.</p>
+<p>The following figure demonstrates a coarse model for multiple hard drives. At first, we split our data into pieces. Each piece of data is stored on a separate hard drive. When we want to analyze the data, each hard drive will read and process one piece of data respectively. Then the results are merged to get the final conclusion. Since one hard drive only need to read a piece of data, the data access time can be shortened.</p>
+<center>
+<a href="../../post-attachments/1/a-coarse-model-for-multiple-hard-drives1.png"><img src="../../post-attachments/1/a-coarse-model-for-multiple-hard-drives1.png" alt="" width="539" height="357"></a>
+</center>
+<p>One question may be as follows: &gt; Isn’t it a waste of hard drive space if we use multiple drives to store only one dataset? Yes, it is really a waste of space. However, imagine if we have multiple datasets (or multiple users of this system), we can do the same to all the datasets. Then the space of hard drives can be more efficiently utilized. At the same time, the data access time for each dataset will be shortened as long as we don’t analyze all datasets at the same time!</p>
+<p>Then we may want to build one such kind of system. But we will confront some problems. The first problem is about hardware failure rate. Although an individual hardware has a relatively low failure rate, the failure rate of a group of hard drives will be high, since the system fails as long as one of the drives fails. The second problem is in which way can we combine the data from multiple drives? There are also other problems need to be addressed.</p>
+<p>With consideration of these problems, Hadoop is such kind of system for distributed computing! The Hadoop project provides you the concept, ideas and framework. It also offers a system for installation. You can install the Hadoop system on a single machine or on a group of computers. It is somewhat like the operating system designed for computer cluster. Hadoop also provides libraries so that you can write your own applications to interact with the system, and to analyze your own dataset.</p>
+<h2 id="overview-of-hadoop">2. Overview of Hadoop</h2>
+<p>Hadoop is a top project. It has several subprojects. Each subproject deals with one aspect of distributed computing. The following is a list of Hadoop subprojects, but not the full list.</p>
+<ul>
+<li>HDFS: a distributed filesystem</li>
+<li>MapReduce: a distributed data processing model and execution environment</li>
+<li>Pig: a data flow language and execution environment for exploring very large datasets</li>
+<li>HBase: a distributed, column-oriented database</li>
+<li>ZooKeeper: a distributed, highly available coordination service</li>
+<li>Hive: a distributed data warehouse</li>
+</ul>
+<p>This a graphic demonstration of Hadoop subprojects.</p>
+<center>
+<a href="../../post-attachments/1/Hadoop-subprojects.png"><img src="../../post-attachments/1/Hadoop-subprojects.png" alt="" width="458" height="269"></a>
+</center>
+<p>Two important subprojects are HDFS and MapReduce, which are designed for data storage and data analysis respectively. These two parts provide systematical solution to the pre-mentioned problems.</p>
+<h2 id="hadoop-subprojects">3. Hadoop Subprojects</h2>
+<h3 id="hdfs">3.1 HDFS</h3>
+<p>HDFS is short for Hadoop Distributed FileSystem. As you can see from the name, it manages the storage across a network of machines. HDFS is suitable for</p>
+<ul>
+<li>Very large files (GB or TB sized)</li>
+<li>Streaming data access (write once, read many times)</li>
+<li>Commodity hardware (it doesn’t require expensive or special hardware)</li>
+</ul>
+<p>HDFS is not suitable for</p>
+<ul>
+<li>Low-latency data access (HDFS needs some time to find the location of the file)</li>
+<li>Lots of small files (i.e. billions of small files)</li>
+<li>Multiple writers, arbitrary file modifications The reason lies in the mechanism of HDFS. The structure of HDFS is like this.</li>
+</ul>
+<center>
+<a href="../../post-attachments/1/HDFS-structure.png"><img src="../../post-attachments/1/HDFS-structure.png" alt="" width="557" height="280"></a>
+</center>
+<p>Files in HDFS are broken into equal-sized blocks (e.g. 64MB). The block size is the minimum amount of data that the system can read or write. Blocks from the same file are stored independently. As mentioned before, a group of hard drives is not reliable. Thus each block is replicated (e.g. 3 copies) in case of hardware corruption.</p>
+<p>Datanodes are workers. A datanode is responsible for storing and retrieving file blocks. It also reports to namenode periodically with the list of blocks that it is storing. I think a datanode can be regarded as a computer in the network.</p>
+<p>Namenode is the heart of the system, the master. It maintains the filesystem tree and metadata for all the files and directories in the tree. The tree looks like this.</p>
+<center>
+<a href="../../post-attachments/1/file-tree.png"><img src="../../post-attachments/1/file-tree.png" alt="" width="619" height="202"></a>
+</center>
+<p>At first, there is a root directory. The root contains several sub-directories. Each directory has several files and each files is divided into blocks. Since datanodes report to namenode periodically with block lists, the namenode knows which datanode that a block is located at.</p>
+<p>This is the data reading process in HDFS.</p>
+<center>
+<a href="../../post-attachments/1/data-reading-in-HDFS.jpg"><img src="../../post-attachments/1/data-reading-in-HDFS.jpg" alt="Source: White, Tom. &quot Hadoop: The definitive guide. &quot 3rd Edition, Page 68, O'Reilly Media, Inc., 2012." width="622" height="375"></a>
+</center>
+<p>At first, the system will refer to the namenode to get the list of blocks of the file as well as block locations. Then the InputStream will read every blocks from the corresponding datanode simultaneously.</p>
+<p>This is the data writing process of HDFS:</p>
+<center>
+<a href="../../post-attachments/1/data-writing-in-HDFS.jpg"><img src="../../post-attachments/1/data-writing-in-HDFS.jpg" alt="Source: White, Tom. &quot Hadoop: The definitive guide. &quot; 3rd edition, page 71, O'Reilly Media, Inc., 2012." width="654" height="401"></a>
+</center>
+<p>At first, the system will refer to the namenode to check if the file already exists in the system or not. If it doesn’t exist, the namenode will create the file in the filesystem tree. It also provides a list of datanodes that the blocks of the file can be stored. Then OutputStream will write each block into datanodes. Since each block is replicated several times, it is written to a pipeline of datanodes. That is, after it is written to the first datanode, it is passed to the second datanode, then the third, which can be specified by the user.</p>
+<h3 id="mapreduce">3.2 MapReduce</h3>
+<p>MapReduce is a parallel data-processing model for distributed computing. In this model, the work that we want to do is divided into two phases: the map phase and reduce phase. Each phase has its input and output, in a (key, value) format.</p>
+<center>
+<a href="../../post-attachments/1/mapreduce-structure.png"><img src="../../post-attachments/1/mapreduce-structure.png" alt="" width="473" height="224"></a>
+</center>
+<p>Here is an example. We want to find the highest recorded temperature for each year in the dataset. The input is a large file with each line containing various information for a specific day. In map phase, we extract year and temperature from each line. Since each line is about a day, a year contains multiple lines in the output of map phase. Thus we merge the map output for each year, which is called shuffle. Then we use reduce functions to calculate the maximum temperature for each year. The process is like this.</p>
+<center>
+<a href="../../post-attachments/1/mapreduce-example.jpg"><img src="../../post-attachments/1/mapreduce-example.jpg" alt="" width="681" height="110"></a>
+</center>
+<p>So how MapReduce used for distributed computing? In MapReduce, what we want to do is defined as a <em>job</em>. A job is divided into multiple <em>tasks</em>, including map tasks and reduce tasks. Accordingly, input dataset is split into equal-sized pieces (actually this is what HDFS does) and each task deals with one piece of dataset. <em>Jobtracker</em> and <em>tasktrackers</em> are used for coordination. The following figure shows the process of parallel computing.</p>
+<center>
+<a href="../../post-attachments/1/mapreduce-single.jpg"><img src="../../post-attachments/1/mapreduce-single.jpg" alt="Source: White, Tom. &quot Hadoop: The definitive guide. &quot; 3rd edition, page 32, O'Reilly Media, Inc., 2012." width="555" height="299"></a>
+</center>
+<p>For each split of the input dataset, we apply a map function. Then we merge the map output as the input to the reduce function to get the result. Please note that map functions can be done simultaneously but reduce phase always follows map phase. If we have multiple reduce functions, the process is like this:</p>
+<center>
+<a href="../../post-attachments/1/mapreduce-multiple.jpg"><img class=" wp-image-122" src="../../post-attachments/1/mapreduce-multiple.jpg" alt="Source: White, Tom. &quot Hadoop: The definitive guide. &quot; 3rd edition, page 33, O'Reilly Media, Inc., 2012.\" "="" width="581" height="313"></a>
+</center>
+<p>Hadoop does its best to run map task on the computer where input split resides in HDFS, which is called data locality optimization. That is, the computer where the input split is located, is responsible for running map task on the input split. If we use another computer, the input split must be transferred to the computer through the network, which will occupy the bandwidth resource. Therefore, data locality decreases the data transfer through the network. However, reduce tasks don’t have the advantage of data locality. All the output of map functions must be transferred to a specific node for reduce task. In order to minimize data transfer, combiner functions can be used between map and reduce to discard unnecessary information in map output. Take the highest temperature as an example. A combiner function can be applied after shuffle, to calculate the local maximum annual temperature in each split of the input dataset.</p>
+<p>The following figure shows the process of a MapReduce job. At first, the job is assigned an ID for specification. Then it refers to the filesystem to get job resources such as configuration information. After the job is submitted to jobtracker, it will be initialized. The jobtracker also retrieves input splits from the filesystem and set up a map task for each split. The number of reduce tasks is determined by user configuration. Tasktrackers receive tasks and report to the jobtracker about the status of the tasks periodically.</p>
+<center>
+<a href="../../post-attachments/1/mapreduce-process.jpg"><img src="../../post-attachments/1/mapreduce-process.jpg" alt="Source: White, Tom. &quot Hadoop: The definitive guide. &quot; 3rd edition, page 191, O'Reilly Media, Inc., 2012." width="586" height="476"></a>
+</center>
+<p>There is a new system called YARN sharing similar function as MapReduce. Since I didn’t dig into this subproject, I will not discuss YARN here.</p>
+<p>MapReduce deals with low-level operations. With only MapReduce, we have to care about the data flow details. Therefore, we need some advanced tools to help us focus on data itself and deal with the technique details. In the next subsection, I will introduce three high-level subprojects.</p>
+<h3 id="other-subprojects">3.3 Other Subprojects</h3>
+<h4 id="pig">3.3.1 Pig</h4>
+<p>Pig is the language and execution environment for processing large datasets. Pig consists of two pieces: Pig Latin, which is the language to express data flow, and the execution environment to run Pig Latin programs.</p>
+<p>Pig Latin program consists of a series of operations or transformations applied to input data. It can be translated into a series of MapReduce jobs by Pig execution environment so that the Pig Latin language can be understood by Hadoop system. Take the highest recorded temperature for example. With Pig, we only need a few lines to complete the work.</p>
+<center>
+<a href="../../post-attachments/1/Pig-example.jpg"><img src="../../post-attachments/1/Pig-example.jpg" alt="Source: White, Tom. &quot Hadoop: The definitive guide. &quot" width="639" height="176"></a>
+</center>
+<h4 id="hbase">3.3.2 HBase</h4>
+<p>HBase is a distributed column-oriented database built on HDFS. Although it is a database, it doesn’t support SQL. The idea is that if the table grows too large, it is automatically partitioned into regions horizontally (each region contains multiple rows from the table). Similar to HDFS and MapReduce, it has a master-slave structure. It uses a master node to manage the whole space and regionserver slaves to manage one or more regions.</p>
+<h4 id="hive">3.3.3 Hive</h4>
+<p>Hive is a data warehouse infrastructure built on top of Hadoop. It supports the Hive Query language – very similar to SQL. Therefore you can get familiar with Hive very quickly if you are familiar with traditional database.</p>
+<h2 id="summary">4. Summary</h2>
+<p>Hadoop is a collection of subprojects used for parallel data storage, retrieval &amp; analysis in a group of computers/hardwares, in order to mitigate the data access bottleneck in hard drives.</p>
+<h3 id="for-more-information">For more information</h3>
+<ul>
+<li>White, Tom. “Hadoop: The definitive guide.” O’Reilly Media, Inc., 2012.</li>
+<li>Apache Hadoop homepage http://hadoop.apache.org/</li>
+</ul>
+<h3 id="reference">Reference</h3>
+<ul>
+<li>White, Tom. “Hadoop: The definitive guide.” O’Reilly Media, Inc., 2012.</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>I have spent several days in studying Hadoop. Here I would like to write some notes about the concept and ideas behind the Hadoop project]]>
+    </summary>
+    
+      <category term="Hadoop" scheme="http://songcy.net/tags/Hadoop/"/>
+    
+      <category term="big data" scheme="http://songcy.net/tags/big-data/"/>
+    
+      <category term="technique" scheme="http://songcy.net/categories/technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[A Brief Introduction about How to Own Personal Homepage]]></title>
+    <link href="http://songcy.net/posts/introduction-to-personal-homepage/"/>
+    <id>http://songcy.net/posts/introduction-to-personal-homepage/</id>
+    <published>2014-07-02T22:00:00.000Z</published>
+    <updated>2014-07-02T22:00:00.000Z</updated>
+    <content type="html"><![CDATA[<p>So, this is the first post of this site. It is prepared for those who know little about the technology of coding/Internet but want to build their own homepage. At first, some concept should be addressed.</p>
+<h2 id="basic-concept-step-by-step">1. Basic Concept Step by Step</h2>
+<ul>
+<li>Internet. The Internet is composed by a lot of computers around the world.</li>
+<li>Server. Some computers provide service/resources to others. They are servers. For example, you can search on google.com since there is a server providing the search service; you can download a video from youtube.com since there is a server providing the file-transferring service.</li>
+<li>IP address. If we want to get service from a specific server, we should know where it is. What’s more, if a server wants to provide service to us, it should know where our computers are. IP address is the unique address of a computer in the Internet, which providing the location of computers. For example, the IP address of google.com is 203.208.48.151</li>
+<li>Static IP address and dynamic IP address. If the IP address of a computer doesn’t change in different set ups, it is static IP. Most servers require static IP. If the IP address changes after a computer is rebooted, it is a dynamic IP. Probably, the IP of many personal computers is dynamic.</li>
+<li>Domain name. If we want to get access to google, we may provide its IP address. However, it is too difficult to remember. So we get a name for google (www.google.com), which is the domain name. Each domain name is in accord to a specific and unique IP, thus we can find the server by its domain name. Domain name has a hierarchical structure. For example, for “www.google.com”, “com” means “commodity”, “google” means a group of computers, “www” is the name of a specific computer which provides the web service.</li>
+<li><a href="http://www.wordpress.org/" target="_blank" rel="external">WordPress</a>. This is a popular template system for websites with various themes and plugins. I use it to construct the homepage.</li>
+</ul>
+<h2 id="outline-of-owning-homepage">2. Outline of Owning Homepage</h2>
+<ul>
+<li>Get/buy a specific domain name that you like for your site</li>
+<li>Get/buy a host</li>
+<li>Bind the domain name and the IP address of the host</li>
+<li>Build your website</li>
+</ul>
+<h2 id="get-a-domain-name">3. Get a Domain Name</h2>
+<p>Domain name is unique on the Internet, thus you should think about one that has not been used/owned by anyone else. There are a lot of places that you can get a domain name, such as <a href="http://www.net.cn" target="_blank" rel="external">www.net.cn</a> (万网, my choice) ; <a href="https://web.easydns.com/" target="_blank" rel="external">EasyDNS</a>. There are detailed instructions on these sites. Please note that the domain name of google is “google.com” NOT “www.google.com”.</p>
+<h2 id="get-a-host">4. Get a Host</h2>
+<p>A host means a “server” that you need for your website to provide service to others. However, it may not be a physical computer although it is like a computer. You can get/buy a host in many ways. My choice is AWS, provided by Amazon. You can get free of charge if you limit the resources required by your host. But it is enough for personal websites.</p>
+<p>However, the setting up is still complex for me if I want to build the website on <a href="http://aws.amazon.com" target="_blank" rel="external">AWS</a> by myself. There may be some errors in the supporting document of AWS and I cannot get help since I am free of charge. Therefore, I find <a href="https://bitnami.com/" target="_blank" rel="external">Bitnami</a>. Carefully configure the settings and launch a server in the console of Bitnami with the application WordPress (or some other applications). You will obtain an IP address and a domain name.</p>
+<h2 id="binding">5. Binding</h2>
+<p>You the bind the IP address or domain name of your host with your domain name, on the website of your domain provider.</p>
+<h2 id="build-your-homepage">6. Build Your Homepage</h2>
+<p>Login your website as administrator with the account and password specified when launching you host. Find a beautiful theme and customize it. It will help a lot if you get to know some about HTML/php/CSS.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>So, this is the first post of this site. It is prepared for those who know little about the technology of coding/Internet but want to bui]]>
+    </summary>
+    
+      <category term="homepage, wordpress" scheme="http://songcy.net/tags/homepage-wordpress/"/>
+    
+      <category term="Technique" scheme="http://songcy.net/categories/Technique/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Welcome to My Homepage]]></title>
+    <link href="http://songcy.net/posts/welcome-to-my-homepage/"/>
+    <id>http://songcy.net/posts/welcome-to-my-homepage/</id>
+    <published>2014-06-30T22:00:00.000Z</published>
+    <updated>2014-06-30T22:00:00.000Z</updated>
+    <content type="html"><![CDATA[<p>Hey, welcome to my homepage. I will update the website irregularly. Thank you for your attention.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Hey, welcome to my homepage. I will update the website irregularly. Thank you for your attention.</p>
+]]>
+    </summary>
+    
+      <category term="welcome" scheme="http://songcy.net/tags/welcome/"/>
+    
+      <category term="others" scheme="http://songcy.net/categories/others/"/>
+    
+  </entry>
+  
+</feed>
