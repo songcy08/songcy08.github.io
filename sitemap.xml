@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://songcy.net/leave-a-message/index.html</loc>
+    <lastmod>2014-12-28T12:33:04.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://songcy.net/posts/summary-of-state-space-models/</loc>
     <lastmod>2014-12-09T23:00:00.000Z</lastmod>
   </url>
@@ -12,12 +17,12 @@
   </url>
   
   <url>
-    <loc>http://songcy.net/academy/index.html</loc>
+    <loc>http://songcy.net/travel/index.html</loc>
     <lastmod>2014-11-09T23:00:00.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://songcy.net/travel/index.html</loc>
+    <loc>http://songcy.net/academy/index.html</loc>
     <lastmod>2014-11-09T23:00:00.000Z</lastmod>
   </url>
   

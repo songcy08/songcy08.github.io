@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Welcome to Changyue Song's Homepage]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://songcy.net/"/>
-  <updated>2014-12-28T12:13:39.695Z</updated>
+  <updated>2014-12-28T12:33:56.702Z</updated>
   <id>http://songcy.net/</id>
   
   <author>
@@ -325,7 +325,9 @@
     <![CDATA[<p>So, this is the first post of this site. It is prepared for those who know little about the technology of coding/Internet but want to bui]]>
     </summary>
     
-      <category term="homepage, wordpress" scheme="http://songcy.net/tags/homepage-wordpress/"/>
+      <category term="homepage" scheme="http://songcy.net/tags/homepage/"/>
+    
+      <category term="wordpress" scheme="http://songcy.net/tags/wordpress/"/>
     
       <category term="Technique" scheme="http://songcy.net/categories/Technique/"/>
     
