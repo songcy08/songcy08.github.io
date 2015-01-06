@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Welcome to Changyue Song's Homepage]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://songcy.net/"/>
-  <updated>2014-12-28T15:09:05.980Z</updated>
+  <updated>2015-01-06T18:35:48.421Z</updated>
   <id>http://songcy.net/</id>
   
   <author>
@@ -146,11 +146,11 @@
     
       <category term="Fourier transformation" scheme="http://songcy.net/tags/Fourier-transformation/"/>
     
-      <category term="Function basis" scheme="http://songcy.net/tags/Function-basis/"/>
+      <category term="function basis" scheme="http://songcy.net/tags/function-basis/"/>
     
-      <category term="Kernel function" scheme="http://songcy.net/tags/Kernel-function/"/>
+      <category term="kernel function" scheme="http://songcy.net/tags/kernel-function/"/>
     
-      <category term="Kernel method" scheme="http://songcy.net/tags/Kernel-method/"/>
+      <category term="kernel method" scheme="http://songcy.net/tags/kernel-method/"/>
     
       <category term="academy" scheme="http://songcy.net/categories/academy/"/>
     
