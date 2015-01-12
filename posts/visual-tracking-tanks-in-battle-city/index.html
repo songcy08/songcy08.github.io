@@ -1,0 +1,663 @@
+
+ <!DOCTYPE HTML>
+<html lang="EN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Archives | Green Sky</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Song, Changyue">
+    
+    <meta name="description" content="1. Introduction
+1.1 Review of Visual Object Tracking
+Visual object tracking is a rapidly developing area in computer vision community. The purpose o">
+    
+    
+    <meta name="description" content="1. Introduction
+1.1 Review of Visual Object Tracking
+Visual object tracking is a rapidly developing area in computer vision community. The purpose of visual object tracking is to track objects of in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visual Tracking of Tanks in Battle City">
+<meta property="og:url" content="http://songcy.net/posts/visual-tracking-tanks-in-battle-city/">
+<meta property="og:site_name" content="Green Sky">
+<meta property="og:description" content="1. Introduction
+1.1 Review of Visual Object Tracking
+Visual object tracking is a rapidly developing area in computer vision community. The purpose of visual object tracking is to track objects of in">
+<meta property="og:image" content="../../post-attachments/4/battle-city.jpg">
+<meta property="og:image" content="../../post-attachments/4/multiple-templates.png">
+<meta property="og:image" content="../../post-attachments/4/coordinator.png">
+<meta property="og:image" content="../../post-attachments/4/step1.png">
+<meta property="og:image" content="../../post-attachments/4/step5.png">
+<meta property="og:image" content="../../post-attachments/4/stepn.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Visual Tracking of Tanks in Battle City">
+<meta name="twitter:description" content="1. Introduction
+1.1 Review of Visual Object Tracking
+Visual object tracking is a rapidly developing area in computer vision community. The purpose of visual object tracking is to track objects of in">
+
+
+    
+    <link rel="alternative" href="/atom.xml" title="Green Sky" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/images/frontpage.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/images/frontpage.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+	<link rel="stylesheet" href="/css/flexslider.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		<div id="mailboxbar">
+			<span><a class="icon-envelope-alt" href="mailto:songcy08@qq.com"> songcy08@qq.com</a></span>
+		</div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/images/author.jpg" alt="Green Sky" title="Green Sky"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a id="blue-site-name" href="/" title="Green Sky">Green Sky</a></h1>
+				<h2 class="blog-motto">Welcome to Changyue Song&#39;s Homepage</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav id="animated">
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/academy">Academy</a></li>
+					
+						<li><a href="/favorites">Favorites</a></li>
+					
+						<li><a href="/travel">Travel</a></li>
+					
+						<li><a href="/posts">Posts</a></li>
+					
+						<li><a href="/leave-a-message">Leave a message</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:songcy.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/posts/visual-tracking-tanks-in-battle-city/" title="Visual Tracking of Tanks in Battle City" itemprop="url">Visual Tracking of Tanks in Battle City</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://songcy.net/about" title="Song, Changyue" target="_blank" itemprop="author">Song, Changyue</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-11T23:00:00.000Z" itemprop="datePublished"> Published 2015-01-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text">1. Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#review-of-visual-object-tracking"><span class="toc-text">1.1 Review of Visual Object Tracking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#description-of-the-project"><span class="toc-text">1.2 Description of the Project</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#method"><span class="toc-text">2. Method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#particle-filters"><span class="toc-text">2.1 Particle Filters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#prediction-model"><span class="toc-text">2.2 Prediction Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#measurement-model"><span class="toc-text">2.3 Measurement Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#feature-extraction"><span class="toc-text">2.4 Feature Extraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#multiple-templates"><span class="toc-text">2.5 Multiple Templates</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#experiments"><span class="toc-text">3. Experiments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#experiment-description"><span class="toc-text">3.1 Experiment Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#experiment-results"><span class="toc-text">3.2 Experiment Results</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary-and-conclusions"><span class="toc-text">4. Summary and Conclusions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#acknowledgement"><span class="toc-text">5. Acknowledgement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-text">Reference</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="introduction">1. Introduction</h2>
+<h3 id="review-of-visual-object-tracking">1.1 Review of Visual Object Tracking</h3>
+<p>Visual object tracking is a rapidly developing area in computer vision community. The purpose of visual object tracking is to track objects of interests in video or consecutive images. It has various applications such as car surveillance [1], smart room [2], augmented reality [3], etc. The tracking of real-world objects is challenging as a result of environment noise, occlusion, objects interaction, object deformation, change of light, etc. Recently, Kevin Cannons made a comprehensive review of the models and techniques widely used in 2D visual tracking [4]. Other reviews in this field include [5], [6], and [7]. According to [4], common tools of visual object tracking include foreground detection, feature extraction, tracking models, and data association.</p>
+<p>Foreground detection aims to detection the objects of interests, which is in contrast to background. Methods for foreground detection fall into three categories. The first category is background subtraction, which assumes a template of background without objects in it [8]. Then the targets are obtained by subtracting the background from the image. The second category is based on image difference. These methods assume moving objects in consecutive frames, which causes the difference in the active areas between temporal adjacent frames. Typical methods include two-frame difference [9], three-frame difference [10], and motion coherence energy [11]. The first two categories assume static camera with static background. To handle non-static cases, additional efforts are necessary to calibrate the background. The third category includes target spotting approaches, which assumes reliable templates for targets [12]. Detectors are trained to compare features from the suspicious region and the template to determine the presence of objects.</p>
+<p>Feature extraction methods play an important role in visual object tracking. The aim of feature extraction is to characterize an object as well as to distinguish it from the background and other objects. Good features are able to uniquely identify a certain object from the environment and are insensitive to the deformation or occlusion of the target. Popular features include discrete features, interest points, and regional features. Discrete features include edges and lines of the object which can be detected by edge detectors. Canny’s edge detector is one of the most widely used edge detectors currently [13]. Interest points is another class of image features such as the center of a corner. Regional features describe the characteristic of a region in an image. Color histogram is a typical regional feature, which characterize a region by its histogram of RGB (red, green, blue) values or HSV (hue, saturation, brightness) values [14]. Color histogram gains its popularity since its simplicity, light computation, and insensitivity to occlusions or scales.</p>
+<p>According to whether a method makes predictions, a tracking model can be classified into deterministic method or stochastic method [15]. Deterministic methods typically track by iteratively seeking a region in an image which has maximum similarity with a given template. Mean-shift algorithm is a typical deterministic method [14]. In contrast, stochastic methods employ statistical models such as Kalman filters and particle filters for object tracking [16]. These models execute prediction and updating repetitively. Kalman filters are based on the Gaussian assumption which particle filters use Monte Carlo representation to relieve this constraint.</p>
+<p>When multiple objects are detected, data association techniques help to recognize the same object in different frames, in order to reveal the temporal motion for each object. The simplest data association method is nearest neighbor algorithm [17] which associate two objects by minimum spatial distance.</p>
+<h3 id="description-of-the-project">1.2 Description of the Project</h3>
+<p>“Battle City” is a famous electronic game where one or two players each controls a tank and fires on enemies in a predefined map. A scene of the game is displayed in Figure 1.</p>
+<center>
+<a href="../../post-attachments/4/battle-city.jpg"><img src="../../post-attachments/4/battle-city.jpg" alt="Figure 1: A scene of Battle City" width="625"></a>
+</center>
+<p>The yellow and the green rectangles at the bottom of the image are tanks controlled by the players. The red and white bricks denote walls, and the white tanks are enemies. In this paper, we apply visual object tracking methods to the game “Battle City” with the following considerations:</p>
+<ul>
+<li>The background is static and simple.</li>
+<li>The objects are very different in color with the environment.</li>
+<li>The popularity of this game will make this application interesting.</li>
+</ul>
+<p>Our aim is to track the one or two tanks controlled by the players. Since Kalman filters make the assumption of Gaussian distribution, initialization becomes critical. As a result, Kalman filters need foreground detection methods or manual annotation for the initial position of tanks. They also need foreground detection and data association methods to obtain measurements and update states. On the other side, particle filters are able to handle unknown initial position and nonlinear measurement models, which will relieve us from image processing works. Therefore, we select particles filters which will be described in detail in Section 2. In our method, it is not necessary to adopt any foreground detection or data association techniques.</p>
+<p>Similar to target spotting in foreground detection, we use templates for each objects and compare them with suspicious regions. More specifically, we compare the features extracted from templates and suspicious regions. As mentioned before, the tanks have distinguishable colors, and color-based features usually require less computation, which makes regional color-based features favorable in our case. In this work, we adopt the features raised in [18] since its simplicity and rapid calculation. It also retains spatial information compared to traditional color histograms.</p>
+<p>I use multiple templates for each targets. An object may have different appearance and features in different environments, orientations, status, etc. In our case, the appearance of a tank depends on its orientation. As shown in Figure 2, four templates are adopted for a single object which depict the appearance of the object when its orientation is upward, downward, rightward, and leftward respectively.</p>
+<center>
+<a href="../../post-attachments/4/multiple-templates.png"><img src="../../post-attachments/4/multiple-templates.png" alt="Figure 2: Four templates for one tank" width="625"></a>
+</center>
+<p>This study is mainly based on [15]. In [15], the authors combine contour features and color features in the measurement model of the particle filter. While in this study, only color features are incorporated. Furthermore, we adopt a similar structure that each object is associated with an independent particle filter. This is based on the contrasting color between objects. According to [19], the interaction between similar objects easily cause “hijacks” when lots of particles for one object converge to another. In our case, considering the significant difference between objects, “hijacks” are unlikely to happen and we avoid high-dimensional state space and complex models (e.g. Markov random field) by this structure.</p>
+<h2 id="method">2. Method</h2>
+<h3 id="particle-filters">2.1 Particle Filters</h3>
+<p>Particle filter is a combination of Monte Carlo approach and Bayesian filter. A Bayesian filter considers two stochastic processes, the states <span class="math">\(X_t\)</span> and the measurements <span class="math">\(Y_t\)</span>, where $t=1,2,$ denotes time. The temporal relationship between adjacent states is depicted by prediction probability <span class="math">\(P(X_t|X_{t-1})\)</span>. The relationship between state and measurement is depicted by emission probability <span class="math">\(P(Y_t|X_t)\)</span>. Prediction and updating are iteratively executed. In prediction, the next state at time <span class="math">\(t\)</span>, <span class="math">\(X_t\)</span>, is predicted based on the previous <span class="math">\(t-1\)</span> measurements. <span class="math">\[
+    P(X_t|Y_1, \cdots, Y_{t-1})=\int P(X_t |X_{t-1}) P(X_{t-1}|Y_1, \cdots, Y_{t-1}) dX_{t-1}
+\]</span> When the measurement at time <span class="math">\(t\)</span> arrives, the posterior probability of <span class="math">\(X_t\)</span> is updated as <span class="math">\[
+    P(X_t|Y_1,\cdots,Y_{t-1},Y_t) \propto P(X_t|Y_1, \cdots, Y_{t-1}) P(Y_t |X_t)
+\]</span></p>
+<p>In particle filter, a number of samples <span class="math">\(x_{t,1}, x_{t,2}, \cdots, x_{t,n}\)</span> are used to represent the random variable <span class="math">\(X_t\)</span>. The prediction step changes to <span class="math">\[
+    \mbox{sample } \bar{x}_{t,i} \sim P(X_t | x_{t-1,i}), \quad i=1,2,\cdots, n
+\]</span> And the updating step changes to <span class="math">\[
+    \mbox{sample } \{x_{t,i}\}_{i=1}^n \mbox{ from } \{\bar{x}_{t,i}\}_{i=1}^n \mbox{ according to weight } w_{t,i}=P(Y_t | \bar{x}_{t,i})
+\]</span></p>
+<p>Practically, the prediction probability <span class="math">\(P(X_t|X_{t-1})\)</span> and emission probability <span class="math">\(P(Y_t|X_t)\)</span> are unknown, and need to be inferred from prediction model and measurement model. The next subsection will elaborate the prediction and measurement model employed in this study.</p>
+<h3 id="prediction-model">2.2 Prediction Model</h3>
+<p>In this study, we concern the position of tanks. An object is defined as a rectangular area which surrounds the tank. The state is defined as <span class="math">\[
+    X_t = \begin{pmatrix}
+    a_t \\
+    b_t
+    \end{pmatrix}
+\]</span> where <span class="math">\(a_t\)</span> and <span class="math">\(b_t\)</span> are horizontal and vertical coordinate of the object, as shown in Figure 3.</p>
+<center>
+<a href="../../post-attachments/4/coordinator.png"><img src="../../post-attachments/4/coordinator.png" alt="Figure 3: The coordinate system adopted in this study" width="300"></a>
+</center>
+<p>The prediction model is <span class="math">\[
+    X_{t}=X_{t-1}+\epsilon_{t-1}
+\]</span> where <span class="math">\(\epsilon_{t-1}\)</span> is a random Gaussian noise with zero mean and covariance <span class="math">\(\Sigma_{\epsilon}\)</span>. Therefore, the prediction is <span class="math">\[
+    \bar{x}_{t,i}=x_{t-1,i}+\epsilon_{t-1,i}
+\]</span> for each particle, where <span class="math">\(\epsilon_{t-1,i}\)</span> is a random sample of <span class="math">\(\epsilon_{t-1}\)</span>.</p>
+<h3 id="measurement-model">2.3 Measurement Model</h3>
+<p>Given a template of the object, the measurement model is defined as <span class="math">\[
+    Y_t=Y^*+\delta_{t-1}
+\]</span> where <span class="math">\(Y^*\)</span> is the feature extracted from the template, <span class="math">\(\delta_{t-1}\)</span> is a zero-mean Gaussian noise with covariance <span class="math">\(\Sigma_{\delta}\)</span>. And <span class="math">\[
+    Y_t=h(X_t)
+\]</span> where <span class="math">\(h(X_t)\)</span> means the extraction of features from a rectangle area, the center of which is defined by <span class="math">\(X_t\)</span> and its size is equal to the size of the template.</p>
+<p>Therefore, the weight of each predicted particle can be calculated as <span class="math">\[
+    w_{t,i}=\Phi(h(\bar{x}_{t,i})-Y^*,0,\Sigma_{\delta}) \propto \exp[(h(\bar{x}_{t,i})-Y^*)^T Q^{-1} (h(\bar{x}_{t,i})-Y^*)]
+\]</span> where <span class="math">\(\Phi(z,\mu,\Sigma)\)</span> is the likelihood at <span class="math">\(z\)</span> for Gaussian distribution with mean <span class="math">\(\mu\)</span> and covariance <span class="math">\(\Sigma\)</span>. In our study, we set the covariance matrix <span class="math">\(\Sigma_{\delta}=\sigma^2 I\)</span> where <span class="math">\(I\)</span> is the identity matrix and <span class="math">\(\sigma\)</span> is a scalar. Then the equation above simplifies to <span class="math">\[
+    w_{t,i} \propto \exp \left[ \frac{1}{\sigma^2}\sum_{j=1}^m (h_j(\bar{x}_{t,i})-Y_j^*)^2 \right]
+\]</span> where the subscript <span class="math">\(j\)</span> means the <span class="math">\(j\)</span>th entry of a vector, and <span class="math">\(m\)</span> is the dimension of features.</p>
+<h3 id="feature-extraction">2.4 Feature Extraction</h3>
+<p>We adopted the rectangle color features proposed by [18] as it is simple, easy-to-calculate, and retains spatial information. To extract features from a rectangle region of a grayscale image, the region is at first divide into <span class="math">\(K_1 \times K_2\)</span> small rectangles. Each small rectangle has approximately the same size. An average value of each small rectangle is calculated and concatenated as a vector. For an RGB true color image, the same operations are applied for each of the three layers, and the resulting average values form a feature vector.</p>
+<p>The calculation of the average value for each small rectangle is based on the integral format of the image [18]. In the integral format, the value at <span class="math">\((a,b)\)</span> is calculated as <span class="math">\[
+    R&#39;(a,b)=\sum_{i\leq a} \sum_{j\leq b} R(i,j)
+\]</span> where <span class="math">\(R&#39;(a,b)\)</span> is the value at <span class="math">\((a,b)\)</span> in integral format, and <span class="math">\(R(a,b)\)</span> is the value at <span class="math">\((a,b)\)</span> in original format. Suppose the left-top corner of a small rectangle <span class="math">\(R_i\)</span> is located at <span class="math">\((a_L, b_T)\)</span>, and the right-bottom corner is located at <span class="math">\((a_R, b_B)\)</span>, then the average value can be calculated as <span class="math">\[
+    \bar{R}_i =\frac{1}{|R_i|}\left[ R&#39;(a_L,b_T)+R&#39;(a_R, b_B)-R&#39;(a_L, b_B) - R&#39;(a_R, b_T) \right]
+\]</span> where <span class="math">\(\bar{R}_i\)</span> denotes the average value, and <span class="math">\(|R_i|\)</span> denotes the number of pixels in <span class="math">\(R_i\)</span>.</p>
+<p>A drawback of this feature is the influence from the background. The feature extraction method assumes that objects are rectangles. When objects are not rectangular, an extra of background will be incorporated into the feature vector, which leads to nonstability of features. To decrease the influence, a weight can be attached to each element in the feature vector. For small rectangles located in the middle of the object, the weights are large. And for small rectangles located on the edge of the object, the weights are small. Then the measurement model in Section 3.3 can be modified as <span class="math">\[
+    w_{t,i} \propto \exp \left[ \frac{1}{\sigma^2}\sum_{j=1}^m w&#39;_j(h_j(\bar{x}_{t,i})-Y_j^*)^2 \right]
+\]</span> here <span class="math">\(w&#39;_j\)</span> is the weight for the <span class="math">\(j\)</span>th entry in the feature vector.</p>
+<h3 id="multiple-templates">2.5 Multiple Templates</h3>
+<p>As mentioned before, a tank can have four different appearances. Therefore, a single target should have multiple templates. For each template <span class="math">\(j\)</span>, we calculate the weight <span class="math">\(w_{i,j}\)</span> for each predicted particle <span class="math">\(\bar{x}_{t,i}\)</span> using our measurement model. And the final weight of a particle <span class="math">\(\bar{x}_{t,i}\)</span> is the maximum weight in <span class="math">\(\{ w_{i,1},w_{i,2},\cdots \}\)</span>. Associate with each final weight, a template is selected for each particle. The template which is selected most of the times is considered as the expected template, which defines the width and height of the object.</p>
+<h2 id="experiments">3. Experiments</h2>
+<h3 id="experiment-description">3.1 Experiment Description</h3>
+<p>The program was implemented on the platform MATLAB 2010b. Two cases were considered: the first case had only one target (single player), and the second case had two targets (two players). In both cases, one target had four templates depicting the appearance of the tank in four orientations.</p>
+<p>In our study, each object was tracked by an independent particle filter. In initialization of each particle filter, particles were randomly generated to cover the entire image. After some steps, particles were expected to converge to their objects. Therefore, we solved a global localization problem.</p>
+<p>The covariance of the noise in prediction model was set as <span class="math">\[ 
+    \Sigma_{\epsilon}=\begin{bmatrix}
+    2500 &amp; 0 \\
+    0 &amp; 2500
+    \end{bmatrix}
+\]</span> and the variance of the noise in measurement model was set as <span class="math">\(\sigma=100\)</span>. The number of particles for each particle filter is 1000. Since tanks were approximately rectangular, all dimensions of the feature vector were regarded as equal weight.</p>
+<h3 id="experiment-results">3.2 Experiment Results</h3>
+<p>The first case consists four templates and 1876 consecutive images in size <span class="math">\(1106 \times 578\)</span>. The second case consists eight templates and 1625 consecutive images in the same size. Since the second is more general than the first case, I only describe the result of the second case here.</p>
+<p>The particles begin with global randomness. Figure 4 depicts the particles and estimations of two tanks after one iteration of prediction and updating. The red points are particles of the yellow tank (left), and the blue points are particles of the green tank (right). The red and blue rectangles are the expected position of the two tanks respectively. In this figure, particles tend to concentrate on the walls, and only a few particles are located at black areas.</p>
+<center>
+<a href="../../post-attachments/4/step1.png"><img src="../../post-attachments/4/step1.png" alt="Figure 4: Particles and estimations of two tanks after one iteration of prediction and updating" width="625"></a>
+</center>
+<p>After five steps, particles converge rapidly, as Figure 5 shows.</p>
+<center>
+<a href="../../post-attachments/4/step5.png"><img src="../../post-attachments/4/step5.png" alt="Figure 5: Particles and estimations of two tanks after five iterations" width="625"></a>
+</center>
+<p>The tracking of the yellow tank is less stable than the tracking of the green tank, which can also be seen in Figure 6. An explanation is that the yellow tank is less different with the color of walls than the blue tank, in RGB values.</p>
+<center>
+<a href="../../post-attachments/4/stepn.png"><img src="../../post-attachments/4/stepn.png" alt="Figure 6: The red particles are more dispersive the the blue ones" width="625"></a>
+</center>
+<p>In conclusion, our method successfully tracks the two tanks. The output video is displayed below</p>
+<iframe width="560" height="315" src="//www.youtube.com/embed/d-xK6DuUcZQ" frameborder="0" allowfullscreen>
+</iframe>
+<h2 id="summary-and-conclusions">4. Summary and Conclusions</h2>
+<p>This study employs particle filters to track tanks in the famous game “Battle City”. Rectangle color features are used as measurements. Each object is tracked by an independent particle filter. One contribution of this study is the utilization of multiple templates to solve the problem when targets have different appearance in different occasions. The results of the experiments show that our method is capable to track the targets of interests.</p>
+<h2 id="acknowledgement">5. Acknowledgement</h2>
+<p>This is a course project for “Applied Estimation” in KTH, Sweden. Thank Prof. Folkesson for his instruction. Also thank Yixing Liu, my partner in this project, for her effort.</p>
+<h2 id="reference">Reference</h2>
+<p>[1] Dieter Koller, Joseph Weber, and Jitendra Malik. <em>Robust multiple car tracking with occlusion reasoning</em>. Springer, 1994.</p>
+<p>[2] Stephen S Intille, James W Davis, and Aaron F Bobick. Real-time closed-world tracking. In <em>Computer Vision and Pattern Recognition, 1997. Proceedings., 1997 IEEE </em>Computer Society Conference on*, pages 697-703. IEEE, 1997.</p>
+<p>[3] Rajeev Sharma and Jose Molineros. Role of computer vision in augmented virtual reality. In <em>IS&amp;T/SPIE’s Symposium on Electronic Imaging: Science &amp; Technology</em>, pages 220-231. International Society for Optics and Photonics, 1995.</p>
+<p>[4] Kevin Cannons. A review of visual tracking. <em>Dept. Comput. Sci. Eng., York Univ., Toronto, Canada, Tech. Rep. CSE-2008-07</em>, 2008.</p>
+<p>[5] Hanxuan Yang, Ling Shao, Feng Zheng, Liang Wang, and Zhan Song. Recent advances and trends in visual tracking: A review. <em>Neurocomputing</em>, 74(18):3823-3831, 2011.</p>
+<p>[6] Pierre F Gabriel, Jacques G Verly, Justus H Piater, and Andre Genon. The state of the art in multiple object tracking under occlusion in video sequences. In <em>Advanced Concepts for Intelligent Vision Systems</em>, pages 166-173, 2003.</p>
+<p>[7] Alper Yilmaz, Omar Javed, and Mubarak Shah. Object tracking: A survey. <em>Acm computing surveys (CSUR)</em>, 38(4):13, 2006.</p>
+<p>[8] Christopher Richard Wren, Ali Azarbayejani, Trevor Darrell, and Alex Paul Pentland. Pfinder: Real-time tracking of the human body. <em>Pattern Analysis and Machine Intelligence, IEEE Transactions on</em>, 19(7):780-785, 1997.</p>
+<p>[9] CH Anderson, PJ Burt, and GS Van Der Wal. Change detection and tracking using pyramid transform techniques. In <em>1985 Cambridge Symposium</em>, pages 72-78. International Society for Optics and Photonics,1985.</p>
+<p>[10] Daniel J Dailey, Fritz W Cathey, and Suree Pumrin. An algorithm to estimate mean traffic speed using uncalibrated cameras. <em>Intelligent Transportation Systems, IEEE Transactions on</em>, 1(2):98-107, 2000.</p>
+<p>[11] Markus Enzweiler, Richard P Wildes, and Rainer Herpers. Unified target detection and tracking using motion coherence. In <em>Application of Computer Vision, 2005. WACV/MOTIONS’05 Volume 1. Seventh IEEE Workshops on</em>, volume 2, pages 66-71. IEEE, 2005.</p>
+<p>[12] Kenji Okuma, Ali Taleghani, Nando De Freitas, James J Little, and David G Lowe. A boosted particle filter: Multitarget detection and tracking. In <em>Computer Vision-ECCV 2004</em>, pages 28-39. Springer, 2004.</p>
+<p>[13] John Canny. A computational approach to edge detection. <em>Pattern Analysis and Machine Intelligence, IEEE Transactions on</em>, (6):679-698, 1986.</p>
+<p>[14] Dorin Comaniciu, Visvanathan Ramesh, and Peter Meer. Kernel-based object tracking. <em>Pattern Analysis and Machine Intelligence, IEEE Transactions on</em>, 25(5):564-577, 2003.</p>
+<p>[15] Changjiang Yang, Ramani Duraiswami, and Larry Davis. Fast multiple object tracking via a hierarchical particle filter. In <em>Computer Vision, 2005. ICCV 2005. Tenth IEEE International Conference on</em>, volume 1, pages 212-219. IEEE, 2005.</p>
+<p>[16] S. Thrun, W. Burgard, and D. Fox. <em>Probalistic robotics</em>. MIT Press, 2005.</p>
+<p>[17] James L Crowley, Patrick Stelmaszyk, and Christophe Discours. Measuring image flow by tracking edge-lines. In <em>Computer Vision., Second International Conference on</em>, pages 658-664. IEEE, 1988.</p>
+<p>[18] Paul Viola and Michael J Jones. Robust real-time face detection. <em>International journal of computer vision</em>, 57(2):137-154, 2004.</p>
+<p>[19] Zia Khan, Tucker Balch, and Frank Dellaert. An mcmc-based particle filter for tracking multiple interacting targets. In <em>Computer Vision ECCV 2004</em>, pages 279-290. Springer, 2004.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/academy/">academy</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/visual-object-tracking/">visual object tracking</a><a href="/tags/Battle-City/">Battle City</a><a href="/tags/particle-filter/">particle filter</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://songcy.net/posts/visual-tracking-tanks-in-battle-city/" data-title="Visual Tracking of Tanks in Battle City | Green Sky" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/posts/summary-of-state-space-models/"  title="A Summary of State-space Models">
+ <strong>下一篇：</strong><br/> 
+ <span>A Summary of State-space Models
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="posts/visual-tracking-tanks-in-battle-city/" data-title="Visual Tracking of Tanks in Battle City" data-url="http://songcy.net/posts/visual-tracking-tanks-in-battle-city/"></div>
+</section>
+
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-text">1. Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#review-of-visual-object-tracking"><span class="toc-text">1.1 Review of Visual Object Tracking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#description-of-the-project"><span class="toc-text">1.2 Description of the Project</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#method"><span class="toc-text">2. Method</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#particle-filters"><span class="toc-text">2.1 Particle Filters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#prediction-model"><span class="toc-text">2.2 Prediction Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#measurement-model"><span class="toc-text">2.3 Measurement Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#feature-extraction"><span class="toc-text">2.4 Feature Extraction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#multiple-templates"><span class="toc-text">2.5 Multiple Templates</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#experiments"><span class="toc-text">3. Experiments</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#experiment-description"><span class="toc-text">3.1 Experiment Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#experiment-results"><span class="toc-text">3.2 Experiment Results</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary-and-conclusions"><span class="toc-text">4. Summary and Conclusions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#acknowledgement"><span class="toc-text">5. Acknowledgement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reference"><span class="toc-text">Reference</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/academy/" title="academy">academy<sup>3</sup></a></li>
+		
+			<li><a href="/categories/others/" title="others">others<sup>1</sup></a></li>
+		
+			<li><a href="/categories/technique/" title="technique">technique<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/particle-filter/" title="particle filter">particle filter<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Battle-City/" title="Battle City">Battle City<sup>1</sup></a></li>
+		
+			<li><a href="/tags/visual-object-tracking/" title="visual object tracking">visual object tracking<sup>1</sup></a></li>
+		
+			<li><a href="/tags/welcome/" title="welcome">welcome<sup>1</sup></a></li>
+		
+			<li><a href="/tags/kernel-method/" title="kernel method">kernel method<sup>1</sup></a></li>
+		
+			<li><a href="/tags/kernel-function/" title="kernel function">kernel function<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wordpress/" title="wordpress">wordpress<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Fourier-transformation/" title="Fourier transformation">Fourier transformation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Bayesian-filter/" title="Bayesian filter">Bayesian filter<sup>1</sup></a></li>
+		
+			<li><a href="/tags/state-space-models/" title="state-space models">state-space models<sup>1</sup></a></li>
+		
+			<li><a href="/tags/big-data/" title="big data">big data<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+		
+			<li><a href="/tags/homepage/" title="homepage">homepage<sup>1</sup></a></li>
+		
+			<li><a href="/tags/function-basis/" title="function basis">function basis<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://kaibo.ie.wisc.edu" target="_blank" title="Prof. Liu, Kaibo">Prof. Liu, Kaibo</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://silentvally.com" target="_blank" title="Liu, Tao">Liu, Tao</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.xueningzhu.com/" target="_blank" title="Zhu, Xuening">Zhu, Xuening</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2015 
+		
+		<a href="http://songcy.net" target="_blank" title="Song, Changyue">Song, Changyue</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"songcy"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'songcy';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/images/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>

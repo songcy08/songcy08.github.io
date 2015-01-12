@@ -4,16 +4,18 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Archives: 2014/12 | Green Sky</title>
+    <title>Tag: particle filter | Green Sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Song, Changyue">
     
+    <meta name="description" content="Learning, writing, and communicating">
+    
     
     <meta name="description" content="Learning, writing, and communicating">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Green Sky">
-<meta property="og:url" content="http://songcy.net/posts/2014/12/">
+<meta property="og:url" content="http://songcy.net/tags/particle-filter/">
 <meta property="og:site_name" content="Green Sky">
 <meta property="og:description" content="Learning, writing, and communicating">
 <meta name="twitter:card" content="summary">
@@ -86,11 +88,7 @@
         
 
 <div class="archive-title" >
-  <h2 class="archive-icon">2014/12</h2>
-  
-  <div class="archiveslist archive-float clearfix">
-   <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/posts/2015/01/">2015 - 01</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/posts/2014/12/">2014 - 12</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/posts/2014/10/">2014 - 10</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/posts/2014/07/">2014 - 07</a><span class="archive-list-count">2</span></li></ul>
- </div>
+  <h2 class="tag-icon">particle filter</h2>
   
 </div>
 <div id="main" class="archive-part clearfix">
@@ -99,16 +97,17 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/posts/summary-of-state-space-models/" title="A Summary of State-space Models" itemprop="url">
+    <a href="/posts/visual-tracking-tanks-in-battle-city/" title="Visual Tracking of Tanks in Battle City" itemprop="url">
   
-    <h1 itemprop="name">A Summary of State-space Models</h1>
+    <h1 itemprop="name">Visual Tracking of Tanks in Battle City</h1>
     
      
-           <p itemprop="description" >1. Bayesian Filter
-In this article, I summarize some famous state-space models. Here I won’t go into details but focus on the entire map to get an overview. All these state-space models originate from Bayesian filter. In these models, two stochastic processes are considered. The first process is states \(x_t\), and the second process is observations or measurements \(y_t\), where \(t\) means “time” but generally the processes are not restricted to time series. We are interested in the true valu</p>
+           <p itemprop="description" >1. Introduction
+1.1 Review of Visual Object Tracking
+Visual object tracking is a rapidly developing area in computer vision community. The purpose of visual object tracking is to track objects of interests in video or consecutive images. It has various applications such as car surveillance [1], smart room [2], augmented reality [3], etc. The tracking of real-world objects is challenging as a result of environment noise, occlusion, objects interaction, object deformation, change of light, etc. </p>
         
     
-    <time datetime="2014-12-09T23:00:00.000Z" itemprop="datePublished">2014-12-10</time>
+    <time datetime="2015-01-11T23:00:00.000Z" itemprop="datePublished">2015-01-12</time>
   </a>
 </section>
 
@@ -174,8 +173,6 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
@@ -192,38 +189,6 @@ $(document).ready(function(){
   $(window).scroll(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      h  = $('article h2')
-      ah = $('article h2'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  if(ah.length==0){
-    t.css('display','none');
-  }else{
-    c.click(function(){
-      ta.css('display', 'block').addClass('fadeIn');
-    });
-    o.click(function(){
-      ta.css('display', 'none');
-    });
-    $(window).scroll(function(){
-      ta.css("top",Math.max(140,320-$(this).scrollTop()));
-    });
-  };
 });
 </script>
 
