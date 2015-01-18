@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Welcome to Changyue Song's Homepage]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://songcy.net/"/>
-  <updated>2015-01-12T14:23:49.798Z</updated>
+  <updated>2015-01-18T12:53:55.975Z</updated>
   <id>http://songcy.net/</id>
   
   <author>
@@ -15,7 +15,185 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Visual Tracking of Tanks in Battle City]]></title>
+    <title><![CDATA[Elements of Frequency-domain Analysis]]></title>
+    <link href="http://songcy.net/posts/elements-frequency-domain-analysis/"/>
+    <id>http://songcy.net/posts/elements-frequency-domain-analysis/</id>
+    <published>2015-01-16T23:00:00.000Z</published>
+    <updated>2015-01-16T23:00:00.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="introduction">1. Introduction</h2>
+<p>Frequency-domain analysis is a commonly used technique in signal processing. For example, in heart rate variation (HRV) analysis, high frequency (HF) and low frequency (LF) components are usually extracted from RR intervals based on power spectral analysis. As an industrial engineering, I am not familiar with this area, but I need this tool in my research. Although a lot of open-source software/libraries are available, I think it still necessary to understand what is going on. Therefore, I spent some time in frequency-domain analysis and make a little summary here.</p>
+<h2 id="fourier-transform">2. Fourier Transform</h2>
+<p>Fourier transform is the basis of frequency-domain analysis. Fourier transform maps a signal from time domain to frequency domain. There are four kinds of Fourier transforms:</p>
+<ul>
+<li>Fourier series: <span class="math">\[ X(k)=\frac{1}{T} \int_0^T x(t) e^{-j2\pi k t/T} dt \]</span></li>
+<li>Discrete-time Fourier transform: <span class="math">\[ X(f)=\sum_{n=-\infty}^{\infty} x(n) e^{-j2\pi fn} \]</span></li>
+<li>Continuous-time Fourier transform: <span class="math">\[ X(f)=\int_{-\infty}^{\infty} x(t) e^{-j2\pi ft}dt \]</span></li>
+<li>Discrete Fourier transform: <span class="math">\[ X(k)=\sum_{n=0}^{N-1} x(n) e^{-j2\pi kn/N} \]</span></li>
+</ul>
+<p>Each kind of Fourier transform has its inverse Fourier transform, which reconstruct the original signal based on the frequency components.</p>
+<p>Take Fourier series as an example. It can be shown that any periodic function <span class="math">\(x(t)\)</span> can be represented as linear combination of <span class="math">\(\cos(2\pi m t/T)\)</span> and <span class="math">\(\sin(2\pi n t/T)\)</span>, where <span class="math">\(T\)</span> is the period of <span class="math">\(x(t)\)</span>, i.e. $ x(t+T)=x(t) $ for any <span class="math">\(t\)</span>, and <span class="math">\(m,n\)</span> are integers, <span class="math">\[
+    x(t)=\sum_{m=0}^{\infty} a_m \cos(2\pi mt/T) + \sum_{n=1}^{\infty} b_n \sin(2\pi nt/T)
+\]</span> Here <span class="math">\(a_m\)</span> and <span class="math">\(b_n\)</span> are real numbers. According to Euler’s formula <span class="math">\[
+    e^{jx}=\cos x + j \sin x
+\]</span> where <span class="math">\(j=\sqrt{-1}\)</span>, then we get <span class="math">\[
+    x(t)=\sum_{k=-\infty}^{\infty} X(k) e^{j2\pi k t/T}
+\]</span> Now <span class="math">\(x(t)\)</span> is represented by a linear combination of <span class="math">\(e^{j2\pi k t/T}\)</span>, and <span class="math">\(X(k)\)</span> are the coefficients (complex numbers), <span class="math">\(k\)</span> is integer. Recall the Euler’s formula, <span class="math">\(e^{j2\pi k t/T}\)</span> has period <span class="math">\(T/k\)</span> or frequency <span class="math">\(k/T\)</span>. Thus <span class="math">\(x(t)\)</span> has been discomposited into combination of components in different frequency! It can be shown that the coefficient <span class="math">\(X(k)\)</span> can be calculated as <span class="math">\[
+    X(k)=\frac{1}{T} \int_0^T x(t) e^{-j2\pi k t/T} dt
+\]</span> This equation is Fourier series. Therefore, Fourier series calculates the coefficients for each frequency component. And the previous equation is inverse Fourier series, which reconstruct the original time-domain signal based on the coefficients of frequency components.</p>
+<p>Other kinds of Fourier transforms are similar. And the characteristics of each Fourier transform are listed in the following table.</p>
+<table>
+<tr>
+<th style="text-align:center;border:1px solid">
+ 
+</th>
+<th colspan="2" style="text-align:center;border:1px solid">
+Time domain
+</th>
+<th colspan="2" style="text-align:center;border:1px solid">
+Frequency domain
+</th>
+</tr>
+<tr>
+<td style="text-align:center;border:1px solid">
+Fourier series
+</td>
+<td style="text-align:center;border:1px solid">
+continuous
+</td>
+<td style="text-align:center;border:1px solid">
+periodic
+</td>
+<td style="text-align:center;border:1px solid">
+discrete
+</td>
+<td style="text-align:center;border:1px solid">
+nonperiodic
+</td>
+</tr>
+<tr>
+<td style="text-align:center;border:1px solid">
+Discrete-time Fourier transform
+</td>
+<td style="text-align:center;border:1px solid">
+discrete
+</td>
+<td style="text-align:center;border:1px solid">
+nonperiodic
+</td>
+<td style="text-align:center;border:1px solid">
+continuous
+</td>
+<td style="text-align:center;border:1px solid">
+periodic
+</td>
+</tr>
+<tr>
+<td style="text-align:center;border:1px solid">
+Continuous-time Fourier transform
+</td>
+<td style="text-align:center;border:1px solid">
+continuous
+</td>
+<td style="text-align:center;border:1px solid">
+nonperiodic
+</td>
+<td style="text-align:center;border:1px solid">
+continuous
+</td>
+<td style="text-align:center;border:1px solid">
+nonperiodic
+</td>
+</tr>
+<tr>
+<td style="text-align:center;border:1px solid">
+Discrete Fourier transform
+</td>
+<td style="text-align:center;border:1px solid">
+discrete
+</td>
+<td style="text-align:center;border:1px solid">
+periodic
+</td>
+<td style="text-align:center;border:1px solid">
+discrete
+</td>
+<td style="text-align:center;border:1px solid">
+periodic
+</td>
+</tr>
+</table>
+<p>For example, Fourier series takes a continuous periodic function <span class="math">\(x(t)\)</span> as input, and produces discrete non-periodic coefficients <span class="math">\(X(k)\)</span> as output. The table shows something interesting. Discrete in one domain always related to periodic in the other domain, while continuous in one domain always related to nonperiodic in the other domain.</p>
+<p>Since digital signals are stored in discrete values in computer, discrete-time Fourier transform (DTFT) and discrete Fourier transform (DFT) are more commonly used. DTFT takes discrete nonperiodic signal as input, and produces its frequency components as continuous periodic series. DFT takes discrete periodic signal as input, and produces its frequency components as a discrete periodic signal. If some conditions are satisfied, e.g. <span class="math">\(N=2^n\)</span>, fast Fourier transform (FFT) algorithms can be employed to calculate DFT efficiently.</p>
+<p>Fourier transform can be considered from the point of view <a href="http://songcy.net/posts/vector-to-function-basis-kernel/" title="function basis and kernel method" target="_blank" rel="external">function basis and kernel method</a>, which is the concern of my another article.</p>
+<p>There are other transforms such as z-transform and Laplace transform. They have very similar form with Fourier transform. For example, in z-transform <span class="math">\[
+    X(z)=\sum_{n=-\infty}^{\infty} x(n) z^{-n}
+\]</span> Here <span class="math">\(z\)</span> is a complex number. Let <span class="math">\[
+    z=e^{jw}
+\]</span> we get DTFT.</p>
+<h2 id="energy-spectrum-and-power-spectrum">3. Energy Spectrum and Power Spectrum</h2>
+<p>Energy spectrum is defined as the energy on a specific frequency <span class="math">\[
+    S_x (f) = |X(f)|^2
+\]</span> If we sum up or integrate the energy spectrum over <span class="math">\((-\infty, \infty)\)</span> for Fourier series and continuous Fourier series, and over <span class="math">\([-1, 1]\)</span> for DFT and DTFT, we can get the total energy.</p>
+<p>However, sometimes a signal does not have Fourier transform (continuous Fourier transform or DTFT), i.e. <span class="math">\(|X(f)|\)</span> go to infinity, we define power spectrum as the $ S_x (f)$ divided by the integral interval of Fourier transform. <span class="math">\[
+    R_x (f)=\lim_{T \rightarrow \infty} \frac{1}{2T} |\mathcal{F} (x)|^2
+\]</span> Here <span class="math">\(\mathcal{F} (x)\)</span> applies Fourier transform to <span class="math">\(x(t)\)</span> over <span class="math">\([-T, T]\)</span> at frequency <span class="math">\(f\)</span>. It can be shown that <span class="math">\(R_x (f)\)</span> can be calculated as the Fourier transform of <span class="math">\(r_x(\tau)\)</span> <span class="math">\[
+    R_x (f)=\mathcal{F} (r_x(\tau))
+\]</span> where <span class="math">\[
+    r_x(\tau)=\lim_{T \rightarrow \infty} \frac{1}{2T} \int_{-T}^T x(t+\tau) x(t) dt
+\]</span></p>
+<h2 id="stationary-stochastic-process">4. Stationary Stochastic Process</h2>
+<p>Until now we are talking about deterministic signals, i.e. <span class="math">\(x(t)\)</span> is a specific function of <span class="math">\(t\)</span>. Sometimes it is necessary to consider stochastic process, i.e. <span class="math">\(x_t\)</span> is a random variable. Here I use subscript to distinguish stochastic process from deterministic signal.</p>
+<p>For a stochastic process <span class="math">\(x_1, x_2, \cdots, x_N\)</span>, if the correlation between any two variables depends only on the difference in time <span class="math">\[
+    Cor(x_{n+k}, x_n)=Cor(x_{1+k},x_1)=r(k)
+\]</span> for any <span class="math">\(n\)</span>, and the expected value is certain <span class="math">\[
+    E(x_n)=\mu
+\]</span> The stochastic process is weakly stationary or wide-sense stationary (WSS).</p>
+<p>For WSS process, we cannot apply Fourier transform to the original series directly since they are random numbers. But we can apply Fourier transform to its autocorrelation function <span class="math">\(r(k)\)</span>. Recall Section 3, <span class="math">\[
+    r_x(k)=\lim_{T \rightarrow \infty} \frac{1}{N} \sum_{0}^{N-1} x(t+k) x(t) dt
+\]</span> is the autocorrelation for WSS process with zero mean and variance 1 (for other WSS process, it will be proportional). The resulting value <span class="math">\[
+    R_x (f)=\mathcal{F} (r_k)
+\]</span> is the power spectrum.</p>
+<h2 id="power-spectrum-estimation">5. Power Spectrum Estimation</h2>
+<p>Power spectrum is calculated as the Fourier transform of the autocorrelation function (ACF). However, in practice, the series is usually not infinite, and we rarely know the true ACF. Thus we need to estimate power spectrum. There are two categories of methods for power spectrum estimation: non-parametric method and parametric method.</p>
+<p>In non-parametric method, ACF is estimated directly by data. Periodogram is a non-parametric estimation, where <span class="math">\[
+    \hat{r}(k)=\frac{1}{N} \sum_{n=0}^{N-1-k} x(n)x(n+k)
+\]</span> here <span class="math">\(N\)</span> is the length of the signal. It is equivalent to the ACF of an infinite series <span class="math">\(y(n)\)</span> where <span class="math">\(y(n)=x(n)\)</span> when <span class="math">\(n=0,1,\cdots,N-1\)</span> and <span class="math">\(y(n)=0\)</span> for other <span class="math">\(n\)</span>.</p>
+<p>In parametric method, a model, e.g. autoregressive moving average (ARMA) model, is fitted at first. Then the ACF can be calculated.</p>
+<h2 id="some-comments">6. Some Comments</h2>
+<p>The constraint in power spectrum analysis is that the process should be stationary. However, in a lot of situations, this assumption is not satisfied. Furthermore, power spectrum analysis need a long series of data to obtain good estimation. Therefore, maybe state-space model is a better choice in a number of situations.</p>
+<h2 id="for-more-information">For more information</h2>
+<p>About ARMA model:</p>
+<ul>
+<li>Cryer, J. D., &amp; Chan, K. S. (2008). <em>Time series analysis: with applications in R</em>. Springer.</li>
+</ul>
+<p>About Fourier transform:</p>
+<ul>
+<li><a href="http://www.thefouriertransform.com/" class="uri" target="_blank" rel="external">http://www.thefouriertransform.com/</a></li>
+</ul>
+<p>About power spectrum:</p>
+<ul>
+<li>Hayes, M. H. (2009). <em>Statistical digital signal processing and modeling</em>. John Wiley &amp; Sons.</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="introduction">1. Introduction</h2>
+<p>Frequency-domain analysis is a commonly used technique in signal processing. For example, in ]]>
+    </summary>
+    
+      <category term="Fourier transform" scheme="http://songcy.net/tags/Fourier-transform/"/>
+    
+      <category term="power spectral" scheme="http://songcy.net/tags/power-spectral/"/>
+    
+      <category term="periodogram" scheme="http://songcy.net/tags/periodogram/"/>
+    
+      <category term="ARMA" scheme="http://songcy.net/tags/ARMA/"/>
+    
+      <category term="academic theory" scheme="http://songcy.net/categories/academic-theory/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Visual Tracking of Tanks in Battle City Using Particles Filters]]></title>
     <link href="http://songcy.net/posts/visual-tracking-tanks-in-battle-city/"/>
     <id>http://songcy.net/posts/visual-tracking-tanks-in-battle-city/</id>
     <published>2015-01-11T23:00:00.000Z</published>
@@ -160,7 +338,7 @@
     
       <category term="particle filter" scheme="http://songcy.net/tags/particle-filter/"/>
     
-      <category term="academy" scheme="http://songcy.net/categories/academy/"/>
+      <category term="academic practice" scheme="http://songcy.net/categories/academic-practice/"/>
     
   </entry>
   
@@ -202,11 +380,11 @@
 <p>In this article, I summarize some famous state-space models. Here I won’t go into detai]]>
     </summary>
     
-      <category term="state-space models" scheme="http://songcy.net/tags/state-space-models/"/>
+      <category term="state-space model" scheme="http://songcy.net/tags/state-space-model/"/>
     
       <category term="Bayesian filter" scheme="http://songcy.net/tags/Bayesian-filter/"/>
     
-      <category term="academy" scheme="http://songcy.net/categories/academy/"/>
+      <category term="academic theory" scheme="http://songcy.net/categories/academic-theory/"/>
     
   </entry>
   
@@ -294,15 +472,13 @@
     <![CDATA[<p>Here is only some superficial thought about Fourier transformation (and other similar transformations), space basis, and kernel method. I]]>
     </summary>
     
-      <category term="Fourier transformation" scheme="http://songcy.net/tags/Fourier-transformation/"/>
+      <category term="Fourier transform" scheme="http://songcy.net/tags/Fourier-transform/"/>
     
       <category term="function basis" scheme="http://songcy.net/tags/function-basis/"/>
     
-      <category term="kernel function" scheme="http://songcy.net/tags/kernel-function/"/>
-    
       <category term="kernel method" scheme="http://songcy.net/tags/kernel-method/"/>
     
-      <category term="academy" scheme="http://songcy.net/categories/academy/"/>
+      <category term="academic theory" scheme="http://songcy.net/categories/academic-theory/"/>
     
   </entry>
   
@@ -438,6 +614,10 @@
     
       <category term="big data" scheme="http://songcy.net/tags/big-data/"/>
     
+      <category term="HDFS" scheme="http://songcy.net/tags/HDFS/"/>
+    
+      <category term="MapReduce" scheme="http://songcy.net/tags/MapReduce/"/>
+    
       <category term="technique" scheme="http://songcy.net/categories/technique/"/>
     
   </entry>
@@ -479,8 +659,6 @@
     <![CDATA[<p>So, this is the first post of this site. It is prepared for those who know little about the technology of coding/Internet but want to bui]]>
     </summary>
     
-      <category term="homepage" scheme="http://songcy.net/tags/homepage/"/>
-    
       <category term="wordpress" scheme="http://songcy.net/tags/wordpress/"/>
     
       <category term="technique" scheme="http://songcy.net/categories/technique/"/>
@@ -499,8 +677,6 @@
     <![CDATA[<p>Hey, welcome to my homepage. I will update the website irregularly. Thank you for your attention.</p>
 ]]>
     </summary>
-    
-      <category term="welcome" scheme="http://songcy.net/tags/welcome/"/>
     
       <category term="others" scheme="http://songcy.net/categories/others/"/>
     

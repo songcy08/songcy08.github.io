@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://songcy.net/posts/elements-frequency-domain-analysis/</loc>
+    <lastmod>2015-01-16T23:00:00.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://songcy.net/posts/visual-tracking-tanks-in-battle-city/</loc>
     <lastmod>2015-01-11T23:00:00.000Z</lastmod>
   </url>
@@ -32,12 +37,12 @@
   </url>
   
   <url>
-    <loc>http://songcy.net/academy/index.html</loc>
+    <loc>http://songcy.net/travel/index.html</loc>
     <lastmod>2014-11-09T23:00:00.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://songcy.net/travel/index.html</loc>
+    <loc>http://songcy.net/academy/index.html</loc>
     <lastmod>2014-11-09T23:00:00.000Z</lastmod>
   </url>
   
