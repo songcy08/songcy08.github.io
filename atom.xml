@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Welcome to Changyue Song's Homepage]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://songcy.net/"/>
-  <updated>2015-03-31T15:34:38.618Z</updated>
+  <updated>2015-03-31T15:53:23.239Z</updated>
   <id>http://songcy.net/</id>
   
   <author>
@@ -13,6 +13,31 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Here comes IERA!]]></title>
+    <link href="http://songcy.net/posts/here-comes-iera/"/>
+    <id>http://songcy.net/posts/here-comes-iera/</id>
+    <published>2015-03-30T16:00:00.000Z</published>
+    <updated>2015-03-30T16:00:00.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="hello-iera">1. Hello IERA!</h2>
+<p>After lots lots of days of efforts, IERA is founded, improved, and ready to see you! IERA is short for “Industrial Engineering ERA”, a non-profit website and platform for introducing, spreading, and enhancing the knowledge of Industrial Engineering to people over the world. IERA also serves as a central hub to connect audiences of industrial scientists, academic researchers, engineers, students and those who are interested in IE to share ideas, knowledge, and experience.</p>
+<p><a href="http://iera.name/wp-content/uploads/2015/02/IERA-core.png" target="_blank" rel="external"><img src="http://iera.name/wp-content/uploads/2015/02/IERA-core.png" alt="" width="625" height="364"></a></p>
+<p>IERA is composed by a blog system and a forum. The blog will publish high-quality articles in IE field, and the forum is a place for every user to have discussions. For more information, please refer to the website <a href="http://iera.name/" class="uri" target="_blank" rel="external">http://iera.name/</a></p>
+<h2 id="i-need-your-help">2. I need your help!</h2>
+<p>If you are interested in sharing your own articles with others, editing others’ articles, maintaining a website, or in charge of a forum, please contact me! You may also register the website and participate in our blog system and the forum discussions. Happiness always lies in your sharing with others!</p>
+<p>Welcome, and have fun!</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="hello-iera">1. Hello IERA!</h2>
+<p>After lots lots of days of efforts, IERA is founded, improved, and ready to see you! IERA is sho]]>
+    </summary>
+    
+      <category term="IERA" scheme="http://songcy.net/tags/IERA/"/>
+    
+      <category term="others" scheme="http://songcy.net/categories/others/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Elements of Frequency-domain Analysis]]></title>
