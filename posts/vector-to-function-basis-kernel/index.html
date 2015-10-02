@@ -127,9 +127,9 @@
 <h2 id="function-inner-product">2. Function inner product</h2>
 <p>Vectors have inner product. For vector <span class="math">\(\mathbf{x}=(x_1,\cdots,x_n)\)</span> and <span class="math">\(\mathbf{y}=(y_1, \cdots, y_n)\)</span>, the inner product of <span class="math">\(\mathbf{x}\)</span> and <span class="math">\(\mathbf{y}\)</span> is defined as <span class="math">\[
     &lt;\mathbf{x},\mathbf{y}&gt;=\sum_{i=1}^n x_i y_i
-\]</span> Similarly, functions have inner product. For two functions <span class="math">\(latex f\)</span> and <span class="math">\(latex g\)</span> sampling by interval <span class="math">\(latex \Delta x\)</span>, the inner product may be defined as <span class="math">\[
+\]</span> Similarly, functions have inner product. For two functions <span class="math">\( f\)</span> and <span class="math">\( g\)</span> sampling by interval <span class="math">\( \Delta x\)</span>, the inner product may be defined as <span class="math">\[
     &lt;f,g&gt;=\lim_{\Delta x\rightarrow 0}\sum_{i} f(x_i) g(x_i)
-\]</span> at first thought. However, the above equation doesn’t converge when <span class="math">\(\Delta x\rightarrow 0\)</span>. Something is missing. As <span class="math">\(x\)</span> approaches 0, the dimension of <span class="math">\(f\)</span> and <span class="math">\(g\)</span> grows larger in our denotation.</p>
+\]</span> at first thought. However, the above equation doesn't converge when <span class="math">\(\Delta x\rightarrow 0\)</span>. Something is missing. As <span class="math">\(x\)</span> approaches 0, the dimension of <span class="math">\(f\)</span> and <span class="math">\(g\)</span> grows larger in our denotation.</p>
 <p>For a vector, the dimension is discrete. We only have the first, second,… dimension. But we don’t have the 0.5, 1.5,… dimension. When we transform a function into a vector, every sample point is located at a discrete dimension. However, this should not be true, since the dimension of each sample point should be stable so that the above equation will converge. Therefore, the dimension is not discrete for functions, but continuous. What we miss is the difference between adjacent dimensions for normalization. Therefore, we can define the inner product of two functions as <span class="math">\[
     &lt;f,g&gt;=\lim_{\Delta x\rightarrow 0}\sum_{i} f(x_i) g(x_i)\Delta x=\int f(x)g(x)dx
 \]</span></p>
@@ -159,7 +159,7 @@
     &lt;h_p, h_q&gt;=\int_0^T h_p (x) \bar{h_q(x)} dx=\int_0^T e^{i2\pi p x/T} e^{-i2\pi q x/T} dx=0
 \]</span> where <span class="math">\(p \neq q\)</span> and <span class="math">\(\bar{a+bi}=a-bi\)</span>. The “length” of basis is <span class="math">\[
     |h_p|^2=&lt;h_p,h_p&gt;=T
-\]</span> If a function <span class="math">\(latex f\)</span> defined on interval <span class="math">\([0,T]\)</span> is within the space, it can be written as <span class="math">\[
+\]</span> If a function <span class="math">\( f\)</span> defined on interval <span class="math">\([0,T]\)</span> is within the space, it can be written as <span class="math">\[
     f(x)=\sum_p c_p h_p(x)=\sum_p c_p e^{i2\pi px/T}
 \]</span> And the coefficient can be calculated as <span class="math">\[
     c_p=\frac{&lt;f,h_p&gt;}{|h_p|^2}=\frac{1}{T} \int_0^T f(x)\bar{h_p(x)}dx=\frac{1}{T} \int_0^T f(x) e^{-i2\pi p x} dx
@@ -276,7 +276,7 @@
 		
 			<li><a href="/categories/academic-practice/" title="academic practice">academic practice<sup>1</sup></a></li>
 		
-			<li><a href="/categories/academic-theory/" title="academic theory">academic theory<sup>3</sup></a></li>
+			<li><a href="/categories/academic-theory/" title="academic theory">academic theory<sup>4</sup></a></li>
 		
 			<li><a href="/categories/others/" title="others">others<sup>2</sup></a></li>
 		
@@ -291,7 +291,7 @@
 	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
-			<li><a href="/tags/Fourier-transform/" title="Fourier transform">Fourier transform<sup>2</sup></a></li>
+			<li><a href="/tags/Fourier-transform/" title="Fourier transform">Fourier transform<sup>3</sup></a></li>
 		
 			<li><a href="/tags/Battle-City/" title="Battle City">Battle City<sup>1</sup></a></li>
 		
@@ -301,7 +301,7 @@
 		
 			<li><a href="/tags/kernel-method/" title="kernel method">kernel method<sup>1</sup></a></li>
 		
-			<li><a href="/tags/function-basis/" title="function basis">function basis<sup>1</sup></a></li>
+			<li><a href="/tags/function-basis/" title="function basis">function basis<sup>2</sup></a></li>
 		
 			<li><a href="/tags/Bayesian-filter/" title="Bayesian filter">Bayesian filter<sup>1</sup></a></li>
 		

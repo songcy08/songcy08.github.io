@@ -4,28 +4,21 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Here comes IERA! | Green Sky</title>
+    <title>A Story of Basis and Kernel - Part I: Function Basis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Song, Changyue">
-    
-    <meta name="description" content="1. Hello IERA!
-After lots lots of days of efforts, IERA is founded, improved, and ready to see you! IERA is short for “Industrial Engineering ERA”, a">
-    
-    
-    <meta name="description" content="1. Hello IERA!
-After lots lots of days of efforts, IERA is founded, improved, and ready to see you! IERA is short for “Industrial Engineering ERA”, a non-profit website and platform for introducing,">
+
 <meta property="og:type" content="article">
-<meta property="og:title" content="Here comes IERA!">
-<meta property="og:url" content="http://songcy.net/posts/here-comes-iera/">
+<meta property="og:title" content="A Story of Basis and Kernel - Part I: Function Basis">
+<meta property="og:url" content="http://songcy.net/posts/story-of-basis-and-kernel-part-1">
 <meta property="og:site_name" content="Green Sky">
-<meta property="og:description" content="1. Hello IERA!
-After lots lots of days of efforts, IERA is founded, improved, and ready to see you! IERA is short for “Industrial Engineering ERA”, a non-profit website and platform for introducing,">
-<meta property="og:image" content="http://iera.name/wp-content/uploads/2015/02/IERA-core.png">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Here comes IERA!">
-<meta name="twitter:description" content="1. Hello IERA!
-After lots lots of days of efforts, IERA is founded, improved, and ready to see you! IERA is short for “Industrial Engineering ERA”, a non-profit website and platform for introducing,">
+<meta property="og:description" content="We know that everything in the world can be decomposed into the combination of the basic elements. For example, water is the combination of hydrogen and oxygen. Similarly, in mathematics, basis is used to represent various things in a simple and unified way.">
+<meta property="og:image" content="../../post-attachments/5/Signal_Sampling.png">
+<meta property="og:image" content="../../post-attachments/5/1000px-Dot_Product.png">
+<meta name="twitter:card" content="story">
+<meta name="twitter:title" content="A Story of Basis and Kernel - Part I: Function Basis">
+<meta name="twitter:description" content="We know that everything in the world can be decomposed into the combination of the basic elements. For example, water is the combination of hydrogen and oxygen. Similarly, in mathematics, basis is used to represent various things in a simple and unified way.">
 
 
     
@@ -96,14 +89,14 @@ After lots lots of days of efforts, IERA is founded, improved, and ready to see 
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/posts/here-comes-iera/" title="Here comes IERA!" itemprop="url">Here comes IERA!</a>
+      <a href="/posts/story-of-basis-and-kernel-part-1/" title="A Story of Basis and Kernel - Part I" itemprop="url">A Story of Basis and Kernel - Part I: Function Basis</a>
   </h1>
   <p class="article-author">By
        
 		<a href="http://songcy.net/about" title="Song, Changyue" target="_blank" itemprop="author">Song, Changyue</a>
 		
   <p class="article-time">
-    <time datetime="2015-03-30T16:00:00.000Z" itemprop="datePublished"> Published 2015-03-31</time>
+    <time datetime="2015-09-29T22:30:00.000Z" itemprop="datePublished"> Published 2015-09-29</time>
     
   </p>
 </header>
@@ -112,17 +105,88 @@ After lots lots of days of efforts, IERA is founded, improved, and ready to see 
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hello-iera"><span class="toc-text">1. Hello IERA!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#i-need-your-help"><span class="toc-text">2. I need your help!</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Review-of-Basis-Concept"><span class="toc-text">1. Review of Basis Concept</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Function-Basis"><span class="toc-text">2. Function Basis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fourier-Series"><span class="toc-text">3. Example: Fourier Series</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wavelet-Analysis"><span class="toc-text">4. Example: Wavelet Analysis</span></a></li></ol>
 		
 		</div>
-		
-		<h2 id="hello-iera">1. Hello IERA!</h2>
-<p>After lots lots of days of efforts, IERA is founded, improved, and ready to see you! IERA is short for “Industrial Engineering ERA”, a non-profit website and platform for introducing, spreading, and enhancing the knowledge of Industrial Engineering to people over the world. IERA also serves as a central hub to connect audiences of industrial scientists, academic researchers, engineers, students and those who are interested in IE to share ideas, knowledge, and experience.</p>
-<p><a href="http://iera.name/wp-content/uploads/2015/02/IERA-core.png" target="_blank" rel="external"><img src="http://iera.name/wp-content/uploads/2015/02/IERA-core.png" alt="" width="625" height="364"></a></p>
-<p>IERA is composed by a blog system and a forum. The blog will publish high-quality articles in IE field, and the forum is a place for every user to have discussions. For more information, please refer to the website <a href="http://iera.name/" class="uri" target="_blank" rel="external">http://iera.name/</a></p>
-<h2 id="i-need-your-help">2. I need your help!</h2>
-<p>If you are interested in sharing your own articles with others, editing others’ articles, maintaining a website, or in charge of a forum, please contact me! You may also register the website and participate in our blog system and the forum discussions. Happiness always lies in your sharing with others!</p>
-<p>Welcome, and have fun!</p>
+
+<h2 id="Review-of-Basis-Concept">1. Review of Basis Concept</h2>
+<p>We know that everything in the world can be decomposed into the combination of the basic elements. For example, water is the combination of hydrogen and oxygen. Similarly, in mathematics, basis is used to represent various things in a simple and unified way.</p>
+
+<p>In <span class="math">\( \mathcal{R}^n \) </span> space, we can use <span class="math">\( n \) </span> independent vectors to represent any vector by linear combination. The <span class="math">\( n \) </span> independent vectors can be viewed as a set of basis. There are infinite basis sets in <span class="math">\( \mathcal{R}^n \) </span> space. Among them, basis vectors that are orthogonal to each other are of special interests. For example, <span class="math">\( \{\mathbf{e}_i\}_{i=1}^n \) </span> is a special basis set with mutually orthogonal basis vectors in the same length where <span class="math">\( \mathbf{e}_i \) </span> is a vector that has all zero entries except the <span class="math">\( i \) </span>th entry which equals 1.</p>
+
+<p>The inner product operator measures the similarity between vectors. For two vectors <span class="math"> \( \mathbf{x} \) </span> and <span class="math"> \( \mathbf{y} \) </span>, the inner product is the projection of one vector to the other.</p>
+<center>
+<a href="../../post-attachments/5/1000px-Dot_Product.png"><img src="../../post-attachments/5/1000px-Dot_Product.png" alt="" width="250" height="200"></a>
+</center>
+<span class="math">\[
+    &lt;\mathbf{x},\mathbf{y}&gt;=|\mathbf{x}||\mathbf{y}|\cos\theta
+\]</span>
+If <span class="math">\(\mathbf{x}=(x_1,\cdots,x_n)\)</span> and <span class="math">\(\mathbf{y}=(y_1, \cdots, y_n)\)</span>, we can get <span class="math">\[
+    &lt;\mathbf{x},\mathbf{y}&gt;=\sum_{i=1}^n x_i y_i
+\]</span>
+
+<p>Until now is a review of vector basis. These knowledge can also be extended to functions and function space. </p>
+
+<h2 id="Function-Basis">2. Function Basis</h2>
+
+<p>A function is an infinite vector. As the following figure shows</p>
+
+<center>
+<a href="../../post-attachments/5/Signal_Sampling.png"><img src="../../post-attachments/5/Signal_Sampling.png" alt="source: http://en.wikipedia.org/wiki/Sampling_(signal_processing)" width="379" height="246"></a>
+</center>
+
+<p>For a function defined on the interval <span class="math">\([a,b]\)</span>, we take samples by an interval <span class="math">\(\Delta x\)</span>. If we sample the function <span class="math">\(f(x)\)</span> at points <span class="math">\(a, x_1,\cdots,x_n,b\)</span>, then we can transform the function into a vector <span class="math">\((f(a),f(x_1),\cdots,f(x_n),f(b))^T\)</span>. When <span class="math">\(\Delta x\rightarrow 0\)</span>, the vector should be more and more close to the function and at last, it becomes infinite.</p>
+
+<p>The above analysis assumes <span class="math">\(x\)</span> to be a real number. But when <span class="math">\(x\)</span> is a vector, it still holds. From now on, we use bold font such as <span class="math">\(\mathbf{x}\)</span> to denote normal vector in <span class="math">\(\mathcal{R}^n\)</span> space; use <span class="math">\(f\)</span> to denote the function itself, namely the infinite vector; use <span class="math">\(f(\mathbf{x})\)</span> to denote the evaluation of the function at point <span class="math">\(\mathbf{x}\)</span>. And the evaluation of a function should be a real number.</p>
+
+<p>Since functions are so close to vectors, we can also define the inner product of functions similarly. For two functions <span class="math">\( f\)</span> and <span class="math">\( g\)</span> sampling by interval <span class="math">\( \Delta x\)</span>, the inner product may be defined as <span class="math">\[
+    &lt;f,g&gt;=\lim_{\Delta x\rightarrow 0}\sum_{i} f(x_i) g(x_i)\Delta x=\int f(x)g(x)dx
+\]</span> For a vector, the dimension is discrete. We only have the first, second,… dimension. But we don’t have the 0.5, 1.5,… dimension. However, the dimension is not discrete for functions, but continuous. Thus we use the difference between adjacent dimensions for normalization.</p>
+
+<p>The expression of function inner product is seen everywhere. It has various meanings in various context. For example, if <span class="math"> \( X \) </span> is a continuous random variable with probability density function <span class="math"> \( f(x) \) </span>, i.e., <span class="math"> \( f(x)>0 \) </span> and <span class="math"> \( \int f(x)=1 \) </span>, then the expectation <span class="math">
+\[
+	E[g(x)]=\int f(x) g(x) dx=&lt;f,g&gt;
+\] </span>
+
+<p> Similar to vector basis, we can use a set of functions to represent other functions. The difference is that in a vector space, we only need finite vectors to construct a complete basis set, but in function space, we may need infinite basis functions. Two functions can be regarded as orthogonal if their inner product is zero. In function space, we can also have a set of function basis that are mutually orthogonal. </p>
+
+<h2 id="Fourier-Series">3. Example: Fourier Series</h2>
+
+<p>Let the basis functions <span class="math">\(\{h_p\}_{p=-\infty}^{+\infty}, (p\)</span> is integer) be <span class="math">\[
+    h_p(x)=e^{i2\pi p x/T}
+\]</span>
+defined on interval <span class="math">\([0, T]\)</span>. Here <span class="math"> \( i \) </span> is the imaginary number. These functions construct a function space and any function defined on interval <span class="math">\([0, T]\)</span> can be represented as linear combination of the basis functions. We can prove that any two basis functions are orthogonal (for complex numbers, the latter term should take conjugate transpose when calculating the inner product). <span class="math">\[
+    &lt;h_p, h_q&gt;=\int_0^T h_p (x) \bar{h}_q(x) dx=\int_0^T e^{i2\pi p x/T} e^{-i2\pi q x/T} dx=0
+\]</span> where <span class="math">\(p \neq q\)</span> and <span class="math">\(\overline{a+bi}=a-bi\)</span>. The "length" of basis is <span class="math">\[
+    |h_p|^2=&lt;h_p,h_p&gt;=T
+\]</span> If a function <span class="math">\( f\)</span> defined on interval <span class="math">\([0,T]\)</span> is within the space, it can be written as <span class="math">\[
+    f(x)=\sum_p c_p h_p(x)=\sum_p c_p e^{i2\pi px/T}
+\]</span>. Since <span class="math">
+\[
+	&lt;f,h_p&gt;=&lt;\sum_q c_q h_q,h_p&gt;=\sum_q c_q &lt; h_q,h_p&gt;=c_p &lt; h_p,h_p&gt;=c_p T
+\] </span> the coefficient can be calculated as <span class="math">\[
+    c_p=\frac{1}{T} &lt;f,h_p&gt;=\frac{1}{T} \int_0^T f(x) e^{-i2\pi p x} dx
+\]</span> Actually this is the Fourier series.
+
+<h2 id="Wavelet-Analysis">4. Example: Wavelet Analysis</h2>
+
+<p>Define function <span class="math">\( \psi(x) \) </span> on interval [0,1] as <span class="math">
+\[
+\psi(x)= \begin{cases}
+  1 \quad &amp; 0 \leq  x &lt; \frac{1}{2},\\
+ -1 &amp; \frac{1}{2} \leq x &lt; 1\\
+\end{cases}
+\] </span>. Define a series of functions for every pair <span class="math">\( n,k \) </span> of intergers <span class="math"> \[
+ \psi_{n,k}(x) = 2^{n / 2} \psi(2^n x-k), \quad x \in \mathbf{R}
+\] </span>
+That is, we rescaled <span class="math">\(\psi(x) \) </span> by <span class="math">\( 2^n \) </span> and shift by <span class="math">\( 2^{-n} k \) </span>. We can show that <span class="math"> \[
+&lt;\psi_{n_1,k_1},\psi_{n_2,k_2} &gt; = \int \psi_{n_1,k_1} (x),\psi_{n_2,k_2} (x) dx = \begin{cases}
+	1 \quad &amp; n_1=n_2, k_1=k_2 \\
+	0 \quad &amp; \mbox{otherwise} \end{cases}
+\] </span> Any function can be represented as the linear combination of these functions. By the same technique as the former example, we can also obtain the analytical expression of the coefficient for each basis function. This is the Haar wavelet analysis.</p>
+
+<p>In the next part, we will introduce fundermental kernel functions and kernel method.</p>
+
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -130,13 +194,13 @@ After lots lots of days of efforts, IERA is founded, improved, and ready to see 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/others/">others</a>
+  <a class="article-category-link" href="/categories/academic-theory/">academic theory</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/IERA/">IERA</a>
+  <span></span> <a href="/tags/Fourier-transform/">Fourier transform</a><a href="/tags/function-basis/">function basis</a>
   </div>
 
 </div>
@@ -145,7 +209,7 @@ After lots lots of days of efforts, IERA is founded, improved, and ready to see 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://songcy.net/posts/here-comes-iera/" data-title="Here comes IERA! | Green Sky" data-tsina="null" class="share clearfix">
+	  <div data-url="http://songcy.net/posts/story-of-basis-and-kernel-part-1" data-title="A Story of Basis and Kernel - Part I: Function Basis | Green Sky" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -157,20 +221,12 @@ After lots lots of days of efforts, IERA is founded, improved, and ready to see 
 	</article>
 	
 <nav class="article-nav clearfix">
-
+ 
  <div class="prev" >
- <a href="/posts/story-of-basis-and-kernel-part-1/" title="A Story of Basis and Kernel - Part I: Function Basis">
+ <a href="/posts/here-comes-iera/" title="Here comes IERA!">
   <strong>上一篇：</strong><br/>
   <span>
-  A Story of Basis and Kernel - Part I: Function Basis</span>
-</a>
-</div>
-
-<div class="next">
-<a href="/posts/elements-frequency-domain-analysis/"  title="Elements of Frequency-domain Analysis">
- <strong>下一篇：</strong><br/> 
- <span>Elements of Frequency-domain Analysis
-</span>
+  Here comes IERA!</span>
 </a>
 </div>
 
@@ -178,7 +234,7 @@ After lots lots of days of efforts, IERA is founded, improved, and ready to see 
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="posts/here-comes-iera/" data-title="Here comes IERA!" data-url="http://songcy.net/posts/here-comes-iera/"></div>
+	<div class="ds-thread" data-thread-key="posts/story-of-basis-and-kernel-part-1/" data-title="A Story of Basis and Kernel - Part I: Function Basis" data-url="http://songcy.net/posts/story-of-basis-and-kernel-part-1"></div>
 </section>
 
 
@@ -194,7 +250,7 @@ After lots lots of days of efforts, IERA is founded, improved, and ready to see 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hello-iera"><span class="toc-text">1. Hello IERA!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#i-need-your-help"><span class="toc-text">2. I need your help!</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Review-of-Basis-Concept"><span class="toc-text">1. Review of Basis Concept</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Function-Basis"><span class="toc-text">2. Function Basis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fourier-Series"><span class="toc-text">3. Example: Fourier Series</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wavelet-Analysis"><span class="toc-text">4. Example: Wavelet Analysis</span></a></li></ol>
  
   </div>
 
