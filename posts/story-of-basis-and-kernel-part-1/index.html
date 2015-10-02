@@ -112,7 +112,7 @@
 <h2 id="Review-of-Basis-Concept">1. Review of Basis Concept</h2>
 <p>We know that everything in the world can be decomposed into the combination of the basic elements. For example, water is the combination of hydrogen and oxygen. Similarly, in mathematics, basis is used to represent various things in a simple and unified way.</p>
 
-<p>In <span class="math">\( \mathcal{R}^n \) </span> space, we can use <span class="math">\( n \) </span> independent vectors to represent any vector by linear combination. The <span class="math">\( n \) </span> independent vectors can be viewed as a set of basis. There are infinite basis sets in <span class="math">\( \mathcal{R}^n \) </span> space. Among them, basis vectors that are orthogonal to each other are of special interests. For example, <span class="math">\( \{\mathbf{e}_i\}_{i=1}^n \) </span> is a special basis set with mutually orthogonal basis vectors in the same length where <span class="math">\( \mathbf{e}_i \) </span> is a vector that has all zero entries except the <span class="math">\( i \) </span>th entry which equals 1.</p>
+<p>In <span class="math">\( \mathcal{R}^n \) </span> space, we can use <span class="math">\( n \) </span> independent vectors to represent any vector by linear combination. The <span class="math">\( n \) </span> independent vectors can be viewed as a set of basis. There are infinite basis sets in <span class="math">\( \mathcal{R}^n \) </span> space. Among them, basis vectors that are orthogonal to each other are of special interests. For example, <span class="math">\( \{\mathbf{e}_i\}_{i=1}^n \) </span> is a special basis set with mutually orthogonal basis vectors in the same length, where <span class="math">\( \mathbf{e}_i \) </span> is a vector that has all zero entries except the <span class="math">\( i \)</span>th entry which equals 1.</p>
 
 <p>The inner product operator measures the similarity between vectors. For two vectors <span class="math"> \( \mathbf{x} \) </span> and <span class="math"> \( \mathbf{y} \) </span>, the inner product is the projection of one vector to the other.</p>
 <center>
@@ -125,7 +125,7 @@ If <span class="math">\(\mathbf{x}=(x_1,\cdots,x_n)\)</span> and <span class="ma
     &lt;\mathbf{x},\mathbf{y}&gt;=\sum_{i=1}^n x_i y_i
 \]</span>
 
-<p>Until now is a review of vector basis. These knowledge can also be extended to functions and function space. </p>
+<p>Until now it is a review of vector basis. These knowledge can also be extended to functions and function space. </p>
 
 <h2 id="Function-Basis">2. Function Basis</h2>
 
@@ -137,13 +137,13 @@ If <span class="math">\(\mathbf{x}=(x_1,\cdots,x_n)\)</span> and <span class="ma
 
 <p>For a function defined on the interval <span class="math">\([a,b]\)</span>, we take samples by an interval <span class="math">\(\Delta x\)</span>. If we sample the function <span class="math">\(f(x)\)</span> at points <span class="math">\(a, x_1,\cdots,x_n,b\)</span>, then we can transform the function into a vector <span class="math">\((f(a),f(x_1),\cdots,f(x_n),f(b))^T\)</span>. When <span class="math">\(\Delta x\rightarrow 0\)</span>, the vector should be more and more close to the function and at last, it becomes infinite.</p>
 
-<p>The above analysis assumes <span class="math">\(x\)</span> to be a real number. But when <span class="math">\(x\)</span> is a vector, it still holds. From now on, we use bold font such as <span class="math">\(\mathbf{x}\)</span> to denote normal vector in <span class="math">\(\mathcal{R}^n\)</span> space; use <span class="math">\(f\)</span> to denote the function itself, namely the infinite vector; use <span class="math">\(f(\mathbf{x})\)</span> to denote the evaluation of the function at point <span class="math">\(\mathbf{x}\)</span>. And the evaluation of a function should be a real number.</p>
+<p>The above analysis assumes <span class="math">\(x\)</span> to be a real number. But when <span class="math">\(x\)</span> is a vector, it still holds. In this article, we use bold font such as <span class="math">\(\mathbf{x}\)</span> to denote a vector in <span class="math">\(\mathcal{R}^n\)</span> space; use <span class="math">\(f\)</span> to denote the function itself, namely the infinite vector; use <span class="math">\(f(\mathbf{x})\)</span> to denote the evaluation of the function at point <span class="math">\(\mathbf{x}\)</span>. And the evaluation of a function should be a real number.</p>
 
 <p>Since functions are so close to vectors, we can also define the inner product of functions similarly. For two functions <span class="math">\( f\)</span> and <span class="math">\( g\)</span> sampling by interval <span class="math">\( \Delta x\)</span>, the inner product may be defined as <span class="math">\[
     &lt;f,g&gt;=\lim_{\Delta x\rightarrow 0}\sum_{i} f(x_i) g(x_i)\Delta x=\int f(x)g(x)dx
-\]</span> For a vector, the dimension is discrete. We only have the first, second,… dimension. But we don't have the 0.5, 1.5,… dimension. However, the dimension is not discrete for functions, but continuous. Thus we use the difference between adjacent dimensions for normalization.</p>
+\]</span> For a vector, the dimension is discrete. We only have the first, second,… dimension. But we don't have the 0.5, 1.5,… dimension. However, the dimension is not discrete for functions, but continuous. Thus we use the difference between adjacent dimensions (i.e., <span class="math"> \( \Delta x \) </span>) for normalization.</p>
 
-<p>The expression of function inner product is seen everywhere. It has various meanings in various context. For example, if <span class="math"> \( X \) </span> is a continuous random variable with probability density function <span class="math"> \( f(x) \) </span>, i.e., <span class="math"> \( f(x)>0 \) </span> and <span class="math"> \( \int f(x)=1 \) </span>, then the expectation <span class="math">
+<p>The expression of function inner product is seen everywhere. It has various meanings in various context. For example, if <span class="math"> \( X \) </span> is a continuous random variable with probability density function <span class="math"> \( f(x) \) </span>, i.e., <span class="math"> \( f(x)>0 \) </span> and <span class="math"> \( \int f(x) dx = 1 \) </span>, then the expectation <span class="math">
 \[
 	E[g(x)]=\int f(x) g(x) dx=&lt;f,g&gt;
 \] </span>
@@ -161,12 +161,12 @@ defined on interval <span class="math">\([0, T]\)</span>. Here <span class="math
     |h_p|^2=&lt;h_p,h_p&gt;=T
 \]</span> If a function <span class="math">\( f\)</span> defined on interval <span class="math">\([0,T]\)</span> is within the space, it can be written as <span class="math">\[
     f(x)=\sum_p c_p h_p(x)=\sum_p c_p e^{i2\pi px/T}
-\]</span>. Since <span class="math">
+\]</span> Since <span class="math">
 \[
 	&lt;f,h_p&gt;=&lt;\sum_q c_q h_q,h_p&gt;=\sum_q c_q &lt; h_q,h_p&gt;=c_p &lt; h_p,h_p&gt;=c_p T
 \] </span> the coefficient can be calculated as <span class="math">\[
-    c_p=\frac{1}{T} &lt;f,h_p&gt;=\frac{1}{T} \int_0^T f(x) e^{-i2\pi p x} dx
-\]</span> Actually this is the Fourier series.
+    c_p=\frac{1}{T} &lt;f,h_p&gt;=\frac{1}{T} \int f(x) \bar{h}_p(x) dx=\frac{1}{T} \int_0^T f(x) e^{-i2\pi p x} dx
+\]</span> which is the Fourier series.
 
 <h2 id="Wavelet-Analysis">4. Example: Wavelet Analysis</h2>
 
@@ -176,16 +176,16 @@ defined on interval <span class="math">\([0, T]\)</span>. Here <span class="math
   1 \quad &amp; 0 \leq  x &lt; \frac{1}{2},\\
  -1 &amp; \frac{1}{2} \leq x &lt; 1\\
 \end{cases}
-\] </span>. Define a series of functions for every pair <span class="math">\( n,k \) </span> of intergers <span class="math"> \[
+\] </span> Define a series of functions for every pair <span class="math">\( n,k \) </span> of intergers <span class="math"> \[
  \psi_{n,k}(x) = 2^{n / 2} \psi(2^n x-k), \quad x \in \mathbf{R}
 \] </span>
 That is, we rescaled <span class="math">\(\psi(x) \) </span> by <span class="math">\( 2^n \) </span> and shift by <span class="math">\( 2^{-n} k \) </span>. We can show that <span class="math"> \[
 &lt;\psi_{n_1,k_1},\psi_{n_2,k_2} &gt; = \int \psi_{n_1,k_1} (x),\psi_{n_2,k_2} (x) dx = \begin{cases}
 	1 \quad &amp; n_1=n_2, k_1=k_2 \\
 	0 \quad &amp; \mbox{otherwise} \end{cases}
-\] </span> Any function can be represented as the linear combination of these functions. By the same technique as the former example, we can also obtain the analytical expression of the coefficient for each basis function. This is the Haar wavelet analysis.</p>
+\] </span> Any function can be represented as the linear combination of <span class="math">\( \{ \psi_{n,k} \}_{n,k} \) </span>. By the same technique as the former example, we can also obtain the analytical expression of the coefficient for each basis function, which is the Haar wavelet analysis.</p>
 
-<p>In the next part, we will introduce fundermental kernel functions and kernel method.</p>
+<p>In the next part, fundermentals about kernel functions and kernel method will be discussed.</p>
 
   
 	</div>
