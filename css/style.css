@@ -1,0 +1,129 @@
+@charset "UTF-8";
+.container {
+	background-color: #FFFFFF;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: large;
+	width: 1000px;
+}
+header {
+	width: 100%;
+	padding-bottom: 25px;
+	background-color: #E5E3E3;
+	padding-top: 25px;
+	float: left;
+}
+header ul {
+	float: left;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+header ul li {
+	list-style: none;
+	float: left;
+	font-weight: normal;
+	color: #000000;
+	letter-spacing: 0pt;
+	text-align: center;
+	font-size: x-large;
+	width: 20%;
+}
+
+header ul li a {
+	text-decoration: none;
+	color: #000000
+}
+header ul li:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+.left_article {
+	background-color: #FFFFFF;
+	width: 58%;
+	float: left;
+	color: #343434;
+	padding-bottom: 15px;
+}
+.main_content {
+	background-color: #FFFFFF;
+	width: 100%;
+	float: left;
+}
+.container h1{
+	font-size: xx-large;
+	text-align: center;
+}
+
+.container h2{
+	font-size: x-large;
+}
+.container h3{
+	font-style: italic;
+}
+.container .left_article p {
+	text-align: center;
+	margin: 0px;
+}
+
+.container .left_article ul li {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.container .main_content ol li {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.container .main_content ul li {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.right_article {
+	width: 40%;
+	float: left;
+	background-color: #FFFFFF;
+	padding-left: 1%
+}
+.footer {
+	background-color: #E5E3E3;
+	float: left;
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.title {
+	font-weight: bold;
+	font-style: normal;
+	text-align: center;
+	color: #FFFFFF;
+	letter-spacing: 2px;
+}
+.placeholder {
+	/* [disabled]max-width: 400px;
+*/
+	/* [disabled]max-height: 200px;
+*/
+	width: 100%;
+	padding-top: 30px;
+	/* [disabled]padding-left: 19px;
+*/
+	padding-bottom: 30px;
+	height: 100%;
+}
+.copyright {
+	text-align: center;
+	background-color: #E5E3E3;
+	font-weight: lighter;
+	border-top-width: 2px;
+}
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
