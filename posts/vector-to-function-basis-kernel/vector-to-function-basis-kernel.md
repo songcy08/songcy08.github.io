@@ -6,7 +6,7 @@ Here is only some superficial thought about Fourier transformation (and other si
 A function is an infinite vector. Every thought begins here. As the following figure shows
 
 <center>
-<a href="./Signal_Sampling.png"><img src="./Signal_Sampling.png" alt="source: http://en.wikipedia.org/wiki/Sampling_(signal_processing)" width="379" height="246" /></a>
+<img src="./Signal_Sampling.png" alt="source: http://en.wikipedia.org/wiki/Sampling_(signal_processing)" width="379" height="246" />
 </center>
 
 For a function defined on the interval $[a,b]$, we take samples by an interval $\Delta x$. If we sample the function $f(x)$ at points $a, x_1,\cdots,x_n,b$, then we can transform the function into a vector $(f(a),f(x_1),\cdots,f(x_n),f(b))^T$. When $\Delta x\rightarrow 0$, the vector should be more and more close to the function and at last, it becomes infinite.
@@ -33,7 +33,7 @@ $$
 What is the meaning of inner product? For two vectors $A$ and $B$, the inner product is the projection of one vector to the other.
 
 <center>
-<a href="./1000px-Dot_Product.png"><img src="./1000px-Dot_Product.png" alt="" width="250" height="200" /></a>
+<img src="./1000px-Dot_Product.png" alt="" width="250" height="200" />
 </center>
 
 $$
