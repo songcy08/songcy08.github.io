@@ -37,9 +37,13 @@ $$\mathbf{A} = \mathbf{Q} \mathbf{D} \mathbf{Q}^T$$
 
 ## 3. Kernel Function
 
-A function $f(\mathbf{x})$ can be viewed as an infinite vector, then for a function with two independent variables $K(\mathbf{x},\mathbf{y})$ , we can view it as an infinite matrix. Among them, if $K(\mathbf{x},\mathbf{y}) = K(\mathbf{y},\mathbf{x})$ and $$\int \int f(\mathbf{x}) K(\mathbf{x},\mathbf{y}) f(\mathbf{y}) d\mathbf{x} d\mathbf{y} \geq 0$$ for any function $f$ , then $K(\mathbf{x},\mathbf{y})$ is symmetric and positive definite, in which case $K(\mathbf{x},\mathbf{y})$ is a kernel function.
+A function $f(\mathbf{x})$ can be viewed as an infinite vector, then for a function with two independent variables $K(\mathbf{x},\mathbf{y})$ , we can view it as an infinite matrix. Among them, if $K(\mathbf{x},\mathbf{y}) = K(\mathbf{y},\mathbf{x})$ and 
+$$\int \int f(\mathbf{x}) K(\mathbf{x},\mathbf{y}) f(\mathbf{y}) d\mathbf{x} d\mathbf{y} \geq 0$$
+for any function $f$ , then $K(\mathbf{x},\mathbf{y})$ is symmetric and positive definite, in which case $K(\mathbf{x},\mathbf{y})$ is a kernel function.
 
-Similar to matrix eigenvalue and eigenvector, there exists eigenvalue $\lambda$ and eigenfunction $\psi(\mathbf{x})$ so that $$\int K(\mathbf{x},\mathbf{y}) \psi(\mathbf{x}) d\mathbf{x} = \lambda \psi(\mathbf{y})$$ For different eigenvalues $\lambda_1$ and $\lambda_2$ with corresponding eigenfunctions $\psi_1(\mathbf{x})$ and $\psi_2(\mathbf{x})$ , it is easy to show that 
+Similar to matrix eigenvalue and eigenvector, there exists eigenvalue $\lambda$ and eigenfunction $\psi(\mathbf{x})$ so that 
+$$\int K(\mathbf{x},\mathbf{y}) \psi(\mathbf{x}) d\mathbf{x} = \lambda \psi(\mathbf{y})$$ 
+For different eigenvalues $\lambda_1$ and $\lambda_2$ with corresponding eigenfunctions $\psi_1(\mathbf{x})$ and $\psi_2(\mathbf{x})$ , it is easy to show that 
 $$\begin{array}{rl}
 \int \lambda_1 \psi_1(\mathbf{x}) \psi_2(\mathbf{x}) d\mathbf{x} & = \int \int K(\mathbf{y},\mathbf{x}) \psi_1(\mathbf{y}) d\mathbf{y} \psi_2(\mathbf{x}) d\mathbf{x} \\ & = \int \int K(\mathbf{x},\mathbf{y}) \psi_2(\mathbf{x}) d\mathbf{x} \psi_1(\mathbf{y}) d\mathbf{y} \\ & = \int \lambda_2 \psi_2(\mathbf{y}) \psi_1(\mathbf{y}) d\mathbf{y} \\ & = \int \lambda_2 \psi_2(\mathbf{x}) \psi_1(\mathbf{x}) d\mathbf{x}
 \end{array}

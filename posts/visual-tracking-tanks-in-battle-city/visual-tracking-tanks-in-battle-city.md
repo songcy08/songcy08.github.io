@@ -44,7 +44,7 @@ This study is mainly based on [15]. In [15], the authors combine contour feature
 
 ### 2.1 Particle Filters
 
-Particle filter is a combination of Monte Carlo approach and Bayesian filter. A Bayesian filter considers two stochastic processes, the states $X_t$ and the measurements $Y_t$, where $t=1,2,\cdots $ denotes time. The temporal relationship between adjacent states is depicted by prediction probability $P(X_t|X_{t-1})$. The relationship between state and measurement is depicted by emission probability $P(Y_t|X_t)$. Prediction and updating are iteratively executed. In prediction, the next state at time $t$, $X_t$, is predicted based on the previous $t-1$ measurements.
+Particle filter is a combination of Monte Carlo approach and Bayesian filter. A Bayesian filter considers two stochastic processes, the states $X_t$ and the measurements $Y_t$, where $t=1,2,\cdots$ denotes time. The temporal relationship between adjacent states is depicted by prediction probability $P(X_t|X_{t-1})$. The relationship between state and measurement is depicted by emission probability $P(Y_t|X_t)$. Prediction and updating are iteratively executed. In prediction, the next state at time $t$, $X_t$, is predicted based on the previous $t-1$ measurements.
 $$
 	P(X_t|Y_1, \cdots, Y_{t-1})=\int P(X_t |X_{t-1}) P(X_{t-1}|Y_1, \cdots, Y_{t-1}) dX_{t-1}
 $$
@@ -55,11 +55,11 @@ $$
 
 In particle filter, a number of samples $x_{t,1}, x_{t,2}, \cdots, x_{t,n}$ are used to represent the random variable $X_t$. The prediction step changes to
 $$
-	\mbox{sample } \bar{x}_{t,i} \sim P(X_t | x_{t-1,i}), \quad i=1,2,\cdots, n
+	\text{sample } \bar{x}_{t,i} \sim P(X_t | x_{t-1,i}), \quad i=1,2,\cdots, n
 $$
 And the updating step changes to
 $$
-	\mbox{sample } \{x_{t,i}\}_{i=1}^n \mbox{ from } \{\bar{x}_{t,i}\}_{i=1}^n \mbox{ according to weight } w_{t,i}=P(Y_t | \bar{x}_{t,i})
+	\text{sample } \{x_{t,i}\}_{i=1}^n \text{ from } \{\bar{x}_{t,i}\}_{i=1}^n \text{ according to weight } w_{t,i}=P(Y_t | \bar{x}_{t,i})
 $$
 
 Practically, the prediction probability $P(X_t|X_{t-1})$ and emission probability $P(Y_t|X_t)$ are unknown, and need to be inferred from prediction model and measurement model. The next subsection will elaborate the prediction and measurement model employed in this study.
