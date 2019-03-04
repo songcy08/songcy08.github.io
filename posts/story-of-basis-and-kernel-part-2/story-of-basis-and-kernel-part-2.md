@@ -6,9 +6,7 @@ In the [previous blog](../story-of-basis-and-kernel-part-1), the function basis 
 
 This blog will move a step further discussing about kernel functions and reproducing kernel Hilbert space (RKHS). Kernel methods have been widely used in a variety of data analysis techniques. The motivation of kernel method arises in mapping a vector in $\mathcal{R}^n$ space as another vector in a feature space. For example, imagine there are some red points and some blue points as the next figure shows, which are not easily separable in $\mathcal{R}^n$ space. However, if we map them into a high-dimension feature space, we may be able to seperate them easily. This article will not provide strict theoretical definition, but rather intuitive description on the basic ideas.
 
-<center>
-      <img src="./example1.PNG" alt="" width="600"/>
-      </center>
+<img src="./example1.PNG" alt="" width="600" class="center_img" />
 
 ## 2. Eigen Decomposition
 
@@ -132,7 +130,7 @@ Kernel methods greatly strengthen the discriminative power of SVM.
 
 Kernel method has been widely utilized in data analytics. Here, the fundamental property of RKHS is introduced. With kernel trick, we can easily map the data to a feature space and do analysis. Here is a video with nice demonstration on why we can easily do classification with kernel SVM in a high-dimension feature space.
 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/3liCbRZPrZA" frameborder="0" allowfullscreen=""></iframe>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/3liCbRZPrZA" frameborder="0" allowfullscreen="" class="center_img"></iframe>
 
 The example in Section 5 is from
 

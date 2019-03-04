@@ -7,9 +7,7 @@ In $\mathcal{R}^n$ space, we can use $n$ independent vectors to represent any ve
 
 The inner product operator measures the similarity between vectors. For two vectors $\mathbf{x}$ and $\mathbf{y}$ , the inner product is the projection of one vector to the other.
 
-<center>
-<img src="./1000px-Dot_Product.png" alt="" width="250" height="200">
-</center>
+<img src="./1000px-Dot_Product.png" alt="" width="250" height="200"  class="center_img" />
 
 $$<\mathbf{x},\mathbf{y}>=|\mathbf{x}||\mathbf{y}|\cos\theta$$
 If $\mathbf{x}=(x_1,\cdots,x_n)$ and $\mathbf{y}=(y_1, \cdots, y_n)$, we can get 
@@ -21,9 +19,7 @@ Until now it is a review of vector basis. These knowledge can also be extended t
 
 A function is an infinite vector. As the following figure shows
 
-<center>
-<img src="./Signal_Sampling.png" alt="source: http://en.wikipedia.org/wiki/Sampling_(signal_processing)" width="379" height="246">
-</center>
+<img src="./Signal_Sampling.png" alt="source: http://en.wikipedia.org/wiki/Sampling_(signal_processing)" width="379" height="246"  class="center_img" />
 
 For a function defined on the interval $[a,b]$, we take samples by an interval $\Delta x$. If we sample the function $f(x)$ at points $a, x_1,\cdots,x_n,b$, then we can transform the function into a vector $(f(a),f(x_1),\cdots,f(x_n),f(b))^T$. When $\Delta x\rightarrow 0$, the vector should be more and more close to the function and at last, it becomes infinite.
 
@@ -58,7 +54,9 @@ which is the Fourier series.
 
 Define function $\psi(x)$ on $\mathbf{R}$ as 
 $$\psi(x)= \begin{cases} 1 \quad & 0 \leq x < \frac{1}{2},\\ -1 & \frac{1}{2} \leq x < 1\\ 0 & \text{otherwise} \end{cases}$$
-Define a series of functions for every pair $n,k$ of intergers $$\psi_{n,k}(x) = 2^{n / 2} \psi(2^n x-k), \quad x \in \mathbf{R}$$ That is, we rescaled $\psi(x)$ by $2^n$ and shift by $2^{-n} k$ . We can show that 
+Define a series of functions for every pair $n,k$ of intergers 
+$$\psi_{n,k}(x) = 2^{n / 2} \psi(2^n x-k), \quad x \in \mathbf{R}$$
+That is, we rescaled $\psi(x)$ by $2^n$ and shift by $2^{-n} k$ . We can show that 
 $$<\psi_{n_1,k_1},\psi_{n_2,k_2} > = \int \psi_{n_1,k_1} (x),\psi_{n_2,k_2} (x) dx = \begin{cases} 1 \quad & n_1=n_2, k_1=k_2 \\ 0 \quad & \text{otherwise} \end{cases}$$
 Any function can be represented as the linear combination of $\{ \psi_{n,k} \}_{n,k}$ . By the same technique as the former example, we can also obtain the analytical expression of the coefficient for each basis function, which is the Haar wavelet analysis.
 

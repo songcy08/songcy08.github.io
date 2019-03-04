@@ -25,7 +25,7 @@ Bayesian filters estimate $x_t$ by the posterior distribution $p(x_t | y_{1:t})$
 * Is the measurement model linear or nonlinear?
 According to different answers to these questions, we have different filters as follows.
 
-<img src="./structure-of-bayesian-filters.png" alt="" width="625" height="364" />
+<img src="./structure-of-bayesian-filters.png" alt="" width="625" height="364" class="center_img" />
 
 ## 4. Classification of Bayesian filters
 Based on whether the state $x_t$ is discrete or continuous, Bayesian filters are divided into discrete filters and continuous filters. When state $x_t$ can only be discrete values, the state-to-state probability can be expressed by transition matrix $A=[a_{i,j}]$ where $a_{i,j}=P(x_t =j|x_{t-1}=i)$.

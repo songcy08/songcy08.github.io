@@ -18,9 +18,7 @@ When multiple objects are detected, data association techniques help to recogniz
 
 "Battle City" is a famous electronic game where one or two players each controls a tank and fires on enemies in a predefined map. A scene of the game is displayed in Figure 1.
 
-<center>
-<img src="./battle-city.jpg" alt="Figure 1: A scene of Battle City" width="625" />
-</center>
+<img src="./battle-city.jpg" alt="Figure 1: A scene of Battle City" width="625" class="center_img" />
 
 The yellow and the green rectangles at the bottom of the image are tanks controlled by the players. The red and white bricks denote walls, and the white tanks are enemies. In this paper, we apply visual object tracking methods to the game "Battle City" with the following considerations:
 
@@ -34,9 +32,7 @@ Similar to target spotting in foreground detection, we use templates for each ob
 
 I use multiple templates for each targets. An object may have different appearance and features in different environments, orientations, status, etc. In our case, the appearance of a tank depends on its orientation. As shown in Figure 2, four templates are adopted for a single object which depict the appearance of the object when its orientation is upward, downward, rightward, and leftward respectively.
 
-<center>
-<img src="./multiple-templates.png" alt="Figure 2: Four templates for one tank" width="625" />
-</center>
+<img src="./multiple-templates.png" alt="Figure 2: Four templates for one tank" width="625" class="center_img" />
 
 This study is mainly based on [15]. In [15], the authors combine contour features and color features in the measurement model of the particle filter. While in this study, only color features are incorporated. Furthermore, we adopt a similar structure that each object is associated with an independent particle filter. This is based on the contrasting color between objects. According to [19], the interaction between similar objects easily cause "hijacks" when lots of particles for one object converge to another. In our case, considering the significant difference between objects, "hijacks" are unlikely to happen and we avoid high-dimensional state space and complex models (e.g. Markov random field) by this structure.
 
@@ -75,9 +71,7 @@ $$
 $$
 where $a_t$ and $b_t$ are horizontal and vertical coordinate of the object, as shown in Figure 3.
 
-<center>
-<img src="./coordinator.png" alt="Figure 3: The coordinate system adopted in this study" width="300" />
-</center>
+<img src="./coordinator.png" alt="Figure 3: The coordinate system adopted in this study" width="300" class="center_img" />
 
 The prediction model is
 $$
@@ -158,21 +152,15 @@ The first case consists four templates and 1876 consecutive images in size $1106
 
 The particles begin with global randomness. Figure 4 depicts the particles and estimations of two tanks after one iteration of prediction and updating. The red points are particles of the yellow tank (left), and the blue points are particles of the green tank (right). The red and blue rectangles are the expected position of the two tanks respectively. In this figure, particles tend to concentrate on the walls, and only a few particles are located at black areas.
 
-<center>
-<img src="./step1.png" alt="Figure 4: Particles and estimations of two tanks after one iteration of prediction and updating" width="625" />
-</center>
+<img src="./step1.png" alt="Figure 4: Particles and estimations of two tanks after one iteration of prediction and updating" width="625" class="center_img" />
 
 After five steps, particles converge rapidly, as Figure 5 shows.
 
-<center>
-<img src="./step5.png" alt="Figure 5: Particles and estimations of two tanks after five iterations" width="625" />
-</center>
+<img src="./step5.png" alt="Figure 5: Particles and estimations of two tanks after five iterations" width="625" class="center_img" />
 
 The tracking of the yellow tank is less stable than the tracking of the green tank, which can also be seen in Figure 6. An explanation is that the yellow tank is less different with the color of walls than the blue tank, in RGB values.
 
-<center>
-<img src="./stepn.png" alt="Figure 6: The red particles are more dispersive the the blue ones" width="625" />
-</center>
+<img src="./stepn.png" alt="Figure 6: The red particles are more dispersive the the blue ones" width="625" class="center_img" />
 
 In conclusion, our method successfully tracks the two tanks. The output video is displayed below
 
@@ -190,7 +178,7 @@ This is a course project for "Applied Estimation" in KTH, Sweden. Thank Prof. Fo
 
 [1] Dieter Koller, Joseph Weber, and Jitendra Malik. *Robust multiple car tracking with occlusion reasoning*. Springer, 1994.
 
-[2] Stephen S Intille, James W Davis, and Aaron F Bobick. Real-time closed-world tracking. In *Computer Vision and Pattern Recognition, 1997. Proceedings., 1997 IEEE *Computer Society Conference on*, pages 697-703. IEEE, 1997.
+[2] Stephen S Intille, James W Davis, and Aaron F Bobick. Real-time closed-world tracking. In *Computer Vision and Pattern Recognition, 1997. Proceedings., 1997 IEEE Computer Society Conference on*, pages 697-703. IEEE, 1997.
 
 [3] Rajeev Sharma and Jose Molineros. Role of computer vision in augmented virtual reality. In *IS&T/SPIE's Symposium on Electronic Imaging: Science & Technology*, pages 220-231. International Society for Optics and Photonics, 1995.
 

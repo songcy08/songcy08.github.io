@@ -103,17 +103,12 @@ header ul li:hover {
 	color: #FFFFFF;
 	letter-spacing: 2px;
 }
-.placeholder {
-	/* [disabled]max-width: 400px;
-*/
-	/* [disabled]max-height: 200px;
-*/
-	width: 100%;
+.center_img {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 	padding-top: 30px;
-	/* [disabled]padding-left: 19px;
-*/
 	padding-bottom: 30px;
-	height: 100%;
 }
 .copyright {
 	text-align: center;
