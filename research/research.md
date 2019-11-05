@@ -19,7 +19,7 @@ Crowdsourcing is a prompt and cost-effective way of solving intelligence-intensi
 
 <img src="./crowdsourcing.png" alt="" height="350" class="center_img">
 
-## Apea
-Obstructive sleep apea is a kind of disease. When a patient is in sleep, the occurrence of apnea will obstruct the airflow in breath, leading to snoring and daytime fatigue, and reducing the life quality (see left figure). Current diagnosing tool Polysomnography (PSG) is expensive and time-consuming (see right figure). In my research, the objective is to detect apea based on ECG signals. Since the ECG signals are collected by wearable devices, this can reduce the health care cost.
+## Apnea
+Obstructive sleep apnea is a kind of disease. When a patient is in sleep, the occurrence of apnea will obstruct the airflow in breath, leading to snoring and daytime fatigue, and reducing the life quality (see left figure). Current diagnosing tool Polysomnography (PSG) is expensive and time-consuming (see right figure). In my research, the objective is to detect apnea based on ECG signals. Since the ECG signals are collected by wearable devices, this can reduce the health care cost.
 
 <img src="./apnea.png" alt="" height="350" class="center_img">
