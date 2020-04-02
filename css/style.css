@@ -63,6 +63,10 @@ header ul li:hover {
 .container h3{
 	font-style: italic;
 }
+.container h4{
+	font-size: large;
+	font-style: italic;
+}
 .container .left_article p {
 	text-align: center;
 	margin: 0px;
@@ -121,4 +125,8 @@ body {
 	margin-right: 0px;
 	margin-bottom: 0px;
 	margin-left: 0px;
+}
+
+#announcement {
+	float: left;
 }

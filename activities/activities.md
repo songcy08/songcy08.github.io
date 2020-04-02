@@ -6,6 +6,7 @@
 ## Other Activities
 - Cofounder and administrator of the website IERA (Industrial Engineering Era, http://iera.name/)
 ## Honors 
+- Best paper award, QSR Section, INFORMS Annual Meeting, 2019, for the paper “Collusion Detection and Ground Truth Inference in Crowdsourcing for Labeling Tasks”
 - Feature Article “A Generic Framework for Multisensor Degradation Modeling based on Supervised Classification and Failure Surface” in ISE Magazine, 2019
 - Wisconsin Distinguished Graduate Fellowship (WDGF), College of Engineering, University of Wisconsin-Madison, 2019
 - Mary G. and Joseph Natrella Scholarship, Quality and Productivity Section, American Statistical Association, 2019
