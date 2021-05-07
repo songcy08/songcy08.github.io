@@ -1,4 +1,6 @@
 # Activities
+## Teaching
+- EM 600: Engineering Economics and Cost Analysis (Fall 2020 - present)
 ## Membership
 1. INFORMS
 2. IISE
