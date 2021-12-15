@@ -17,5 +17,3 @@
 
 ## Book Chapters
 1. Lili Chen, **Changyue Song**, and Xi Zhang (2016), “Statistical Modeling of Electrocardiography Signal for Subject Monitoring and Diagnosis,” Healthcare Analytics: From Data to Knowledge to Healthcare Improvement, John Wiley & Sons.
-
-*Code for reference only and could contain mistakes and errors*
