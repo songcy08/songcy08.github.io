@@ -1,5 +1,4 @@
 # Publications
-Disclaimer: the code is for reference only and could contain mistakes or errors.
 ## Journal Transactions
 1. **Changyue Song**, Kaibo Liu, and Xi Zhang (2021), “Collusion Detection and Ground Truth Inference in Crowdsourcing for Labeling Tasks,” *Journal of Machine Learning Research*, 22(190), 1-45. (This paper received the best paper award in the Best Paper Competition in the QSR section of INFORMS, 2019) [\[paper\]](https://www.jmlr.org/papers/volume22/19-373/19-373.pdf) [\[code\]](collusion_crowdsourcing.zip)
 2. **Changyue Song**, Ziqian Zheng, and Kaibo Liu (2021), “Building Local Models for Flexible Degradation Modeling and Prognostics,” *IEEE Transactions on Automation Science and Engineering*, in press. [\[paper\]](local_model.pdf) [\[data\]](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) [\[code\]](local_model.zip)
@@ -18,3 +17,5 @@ Disclaimer: the code is for reference only and could contain mistakes or errors.
 
 ## Book Chapters
 1. Lili Chen, **Changyue Song**, and Xi Zhang (2016), “Statistical Modeling of Electrocardiography Signal for Subject Monitoring and Diagnosis,” Healthcare Analytics: From Data to Knowledge to Healthcare Improvement, John Wiley & Sons.
+
+*Code for reference only and could contain mistakes and errors*
