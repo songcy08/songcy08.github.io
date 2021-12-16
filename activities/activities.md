@@ -4,7 +4,7 @@
 ## Membership
 1. INFORMS
 2. IISE
-3. ASQ
+3. IEEE
 ## Other Activities
 - Cofounder and administrator of the website IERA (Industrial Engineering Era, http://iera.name/)
 ## Honors 
