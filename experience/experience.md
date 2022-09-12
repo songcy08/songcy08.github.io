@@ -1,5 +1,4 @@
-# Research Applications
-Currently there are three applications for my research, including degradation modeling (manufacturing), crowdsourcing (business serivce), and disease screening with wearable devices (health care). 
+# Experience
 ## Degradation
 A battery cannot be used forever without recharging. A machine breaks down after a long period of usage. Alzheimer's disease gradually worsens over time without intervention. Degradation is one of the most common processes in the world that are generally monotonic and leads to an event such as system failure and disease onset. Therefore, sensors are widely used to monitor the degradation process of systems with the help of Internet of Things (IoT). By analyzing the collected sensor signals, it is possible to infer the current system status and predict the future trend of the process.
 
